@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\EmailService;
 use App\Service\QueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,7 +15,7 @@ class ConfigurationController extends AbstractController
     /**
      * ConfigurationController constructor.
      */
-    public function __construct(private QueryService $queryService)
+    public function __construct(private QueryService $queryService, private EmailService $emailService)
     {
     }
 
