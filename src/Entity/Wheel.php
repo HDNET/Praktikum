@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Frame extends AbstractEntity
+class Wheel extends AbstractEntity
 {
     public function __construct(string $articleNumber, string $label, float $price, string $description, int $modellyear, string $properties)
     {
