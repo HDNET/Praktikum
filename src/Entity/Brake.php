@@ -9,9 +9,11 @@ class Brake extends AbstractEntity
      */
     protected $materialType;
 
-    public function __construct(string $articleNumber, string $label, float $price, string $description, int $modellyear, string $properties)
+    public function __construct(string $articleNumber, string $label, float $price, string $description, int $modellyear, string $properties, string $materialType)
     {
         parent::__construct($articleNumber, $label, $price, $description, $modellyear, $properties);
+
+        $this->materialType = $materialType;
     }
 
     /**
