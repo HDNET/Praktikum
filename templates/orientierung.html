@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+body
+<header> <h1> Hier kommt eine Überschrift rein </h1></header>
+<nav> Hier kommt eine Navigation herein</nav>
+<section>
+    Abschnitte die Inhaltlich zusammen gehören werden in Sections unterteilt
+    <div>div</div>
+    <div>
+        div
+        <span> span</span>
+        <span> span</span>
+        <span> span</span>
+
+        können mit weiteren Inhalten befüllt werden
+        <!-- Div Elemente werden Standardmäßig untereinander dargestellt. Span nebeneinander. Mit CSS lässt sich diese Voreinstellung ändern-->
+    </div>
+</section>
+<div> div
+<div> div
+<div> div</div></div></div>
+
+
+<!--  Formulare werden mit dem form-tag erstellt. Da drin befinden sich dann die unterschiedlichsten Eingabefelder
+      https://www.w3schools.com/html/html_forms.asp-->
+<form>
+    <label for="textInput">Label des Inputfeldes</label>
+    <input type="text" id="textInput" name="TextEingabe" placeholder="hier könnte Text stehen"/>
+</form>
+<form class="block-style">
+    <span><label for="checkboxInput"> Checkbox1</label>
+        <input type="checkbox" id="checkboxInput" name="checkInput"/>
+    <label for="checkboxInput2"> Checkbox2</label>
+        <input type="checkbox" id="checkboxInput2" name="checkInput"/>
+    <label for="checkboxInput3"> Checkbox3</label>
+        <input type="checkbox" id="checkboxInput3" name="checkInput"/></span>
+</form>
+<!-- Bei Radio-Buttons ist es wichtig, dass alle Button innerhalb der Gruppe den selben namen haben, damit der Browser erkennt, dass sie zusammengehören-->
+<form class="block-style">
+    <span><label for="checkboxInput"> Radio1</label>
+        <input type="radio" id="radioInput1" name="radioInput" value="radioInput1"/>
+    <label for="checkboxInput2"> Radio2</label>
+        <input type="radio" id="radioInput2" name="radioInput" value="radioInput2"/>
+    <label for="checkboxInput3"> Radio3</label>
+        <input type="radio" id="radioInput3" name="radioInput" value="radioInput3"/></span>
+</form>
+
+
+<button onclick="backend()"> klick mich</button>
+</body>
+</html>
+<style>
+/* Hier ist CSS */
+    body {
+        background-color: whitesmoke;
+    }
+
+    header {
+        background-color: aquamarine;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-family: Arial; /* Das Funktioniert nur mit Schriften, die du Lokal auf deinem Computer installiert hast*/
+        /* wenn du eine Besondere Schrift Nutzen möchtest, ließ dir diese  Doku durch: https://www.mediaevent.de/font-face-schrift-in-webseiten-laden/ */
+    }
+
+    nav {
+        background-color: coral;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    section {
+        background-color: cornflowerblue;
+        padding: 10px;
+    }
+    div {
+        background-color: lightpink;
+        padding: 10px;
+        margin: 10px 0;
+        box-shadow: inset 0px 0px 0px 1px #000000;
+    }
+
+    span {
+        background-color: cadetblue;
+        padding: 10px;
+        box-shadow: inset 0px 0px 0px 1px #000000;
+        width: max-content;
+    }
+    input {
+        padding: 10px;
+    }
+
+    button {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .block-style {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+</style>
+
+<script>
+    function backend() {
+        alert('Mit dem Klick, werden Inhalte an das Backend gesendet')
+    }
+</script>
