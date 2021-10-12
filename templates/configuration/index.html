@@ -1,0 +1,108 @@
+<html>
+<head></head>
+<body>
+
+
+<!-- Der folgende Block beinhaltet Radio-Button. Ließ dir dazu die Doku: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
+Die Radio Buttons habe ich in sog. Listenelemente eingefügt (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul),
+um sie leichter zu stylen. Du kannst die Stylings gerne einmal auskommentieren, um zu schauen, wie sich die Listenelemente verhalten
+
+Ausgerichtet werden die Elemente mit Flexboxen. Damit du weißt, welche Befehle du Anwenden musst, schaue gerne auf dieser
+Website nach : https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+(Da gucke ich bis heute auch noch drauf)
+-->
+<div class="radio-button--wrapper">
+    <ul id="filter1" class="filter-switch">
+        <li class="filter-switch-item">
+            <input type="radio" name="filter1" id="filter1-0" class="screen-readers--only" checked>
+            <label for="filter1-0" class="filter-switch-text">
+                S
+            </label>
+            <div aria-hidden="true" class="filter-active"></div>
+        </li>
+        <li class="filter-switch-item">
+            <input type="radio" name="filter1" id="filter1-1" class="screen-readers--only">
+            <label for="filter1-1" class="filter-switch-text">
+                M
+            </label>
+        </li>
+        <li class="filter-switch-item">
+            <input type="radio" name="filter1" id="filter1-2" class="screen-readers--only">
+            <label for="filter1-2" class="filter-switch-text">
+                L
+            </label>
+        </li>
+        <li class="filter-switch-item">
+            <input type="radio" name="filter1" id="filter1-3" class="screen-readers--only">
+            <label for="filter1-3" class="filter-switch-text">
+                XL
+            </label>
+        </li>
+    </ul>
+</div>
+</body>
+<footer></footer>
+</html>
+<style>
+    .flex-grid {
+        display: flex;
+    }
+    .filter-switch label {
+        cursor: pointer;
+    }
+    .filter-switch-item input:checked + label {
+        color: blue;
+        box-shadow: 0 4px 3px rgba(0,0,0,0.07);
+    }
+    .filter-switch-item input:not(:checked) + label {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .screen-readers--only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    .radio-button--wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 0;
+        background-color: rgb(243, 244, 246);
+    }
+
+    .filter-switch {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        height: 2.5rem;
+        padding: 1rem;
+        margin: 0.25rem;
+        background-color: rgba(229, 231, 235,0.5);
+    }
+
+    .filter-switch-item {
+        display: flex;
+        position: relative;
+        height: 2rem;
+        justify-content: center;
+    }
+
+    .filter-switch-text {
+        height: 2rem;
+        padding: 0.25rem 0.5rem 0 0.5rem;
+        line-height: 1.5rem;
+        color: gray(100);
+        background-color: white;
+        border-radius: 0.25rem;
+
+
+    }
+</style>
