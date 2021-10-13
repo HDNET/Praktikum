@@ -6,6 +6,7 @@ use App\Service\EmailService;
 use App\Service\QueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,9 +38,18 @@ class ConfigurationController extends AbstractController
      */
     public function submitForm(Request $request)
     {
+        /*
+         * Example of value of $queryParams
+         * [
+         *  'inputName1' => 'value1',
+         *  'inputName2' => 'value2',
+         *  'inputName3' => 'value3',
+         * ]
+         */
         $queryParams = $this->queryService->getQueryParameter($request);
-        // do some things
+
         return new JsonResponse($queryParams);
+        // return new RedirectResponse('/'); // Redirect to another route
     }
 
 }
