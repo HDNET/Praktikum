@@ -1,13 +1,73 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<form action="/form/submit">
+    <div class="head-navigation">
+        <img src="img/Logo.svg" alt="">
+        <nav class="content-navigation">
+            <p>Konfigurator</p>
+            <p>Galerie</p>
+            <p>Kontakt</p>
+        </nav>
+    </div>
 
-    <input type="text" name="hallo">
-    <input type="text" name="hallo2">
-    <input type="text" name="hallo3">
-    <input type="text" name="hallo4">
 
-    <input type="submit" />
-</form>
+    <header>
+        <!-- Aufgabe: Recherchiere, wie man Überschriften in html bezeichnet und finde heraus, welche du benötigst. Style Sie anschließend in der style.css -->
+        <h1>Jetzt dein eigenes Fahrrad konfigurieren!</h1>
+    </header>
+    <div class="bike-selection">
+        <aside class="selection-type">
+            <button>Größe</button>
+            <button>Rahmenfarbe</button>
+            <button>Gabel und Dämpfer</button>
+            <button>Schaltung</button>
+            <button>Sattel</button>
+            <button>Lenker etc.</button>
+            <button>Laufräder und Reifen</button>
+            <button>Zubehör</button>
+        </aside>
+        <section>
+            <img alt="" src="img/red.png" id="bikeImg" class="bike-image">
+        </section>
+    </div>
+
+
+    <!-- Der folgende Block beinhaltet Radio-Button. Ließ dir dazu die Doku: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
+    Die Radio Buttons habe ich in sog. Listenelemente eingefügt (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul),
+    um sie leichter zu stylen. Du kannst die Stylings gerne einmal auskommentieren, um zu schauen wie sich die Listenelemente verhalten
+
+    Ausgerichtet werden die Elemente mit Flexboxen. Damit du weißt, welche Befehle du Anwenden musst, schaue gerne auf dieser
+    Website nach : https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    (Da gucke ich bis heute auch noch drauf)
+    -->
+    <section class="selection--wrapper">
+        <!-- Color-Section -->
+        <ul id="color" class="switch">
+            <li class="switch-item" onclick="changeImage('red')">
+                <input type="radio" name="color" id="color-red" class="screen-readers--only" checked>
+                <label for="color-red" class="switch-text color-red">
+
+                </label>
+                <div aria-hidden="true" class="active"></div>
+            </li>
+            <li class="switch-item" onclick="changeImage('blue')">
+                <input type="radio" name="color" id="color-blue" class="screen-readers--only">
+                <label for="color-blue" class="switch-text color-blue">
+
+                </label>
+            </li>
+            <li class="switch-item" onclick="changeImage('green')">
+                <input type="radio" name="color" id="color-green" class="screen-readers--only">
+                <label for="color-green" class="switch-text color-green">
+
+                </label>
+            </li>
+            <li class="switch-item" onclick="changeImage('grey')">
+                <input type="radio" name="color" id="color-white" class="screen-readers--only">
+                <label for="color-white" class="switch-text color-grey">
+
+                </label>
+            </li>
+        </ul>
+    </section>
 {% endblock %}

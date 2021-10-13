@@ -1,0 +1,25 @@
+body {
+    background: linear-gradient(108.45deg, #120F0F -0.11%, #2D1616 51.84%, #120F0F 96.73%);
+    color: #ffffff;
+    /* Hier kannst du gerne eine andere Schhrift einbinden: https://www.mediaevent.de/font-face-schrift-in-webseiten-laden/ */
+    font-family: Arial;
+}
+
+p{
+    margin-left: 50px;
+}
+
+button{margin: 5px;
+padding: 10px;
+border-radius: 5px;
+background-color: #ffffff;
+color: black;
+}
+
+.header-navigation {
+
+}
+
+.bike-image {
+  width: 60vw;
+}

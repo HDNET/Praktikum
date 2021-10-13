@@ -13,11 +13,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ConfigurationController extends AbstractController
 {
+    private $queryService;
+    private $emailService;
+
     /**
      * ConfigurationController constructor.
      */
-    public function __construct(private QueryService $queryService, private EmailService $emailService)
+    public function __construct(QueryService $queryService, EmailService $emailService)
     {
+        $this->queryService = $queryService;
+        $this->emailService = $queryService;
     }
 
 
