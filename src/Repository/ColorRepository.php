@@ -13,13 +13,13 @@ class ColorRepository
         $colorRed = new Color('red', '');
         $colorBlue = new Color('blue', '');
         $colorGreen = new Color('green', '');
-        $colorGray = new Color('gray', '');
+        $colorGrey = new Color('grey', '');
 
         return [
             $colorRed,
             $colorBlue,
             $colorGreen,
-            $colorGray,
+            $colorGrey,
         ];
     }
 }
