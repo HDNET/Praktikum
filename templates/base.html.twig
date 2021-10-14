@@ -46,12 +46,19 @@
             }
 
             const bike = {
-                size: string,
-                color: string,
+                size: '19',
+                color: 'red',
             }
 
             function buy() {
-                // fill form and submit it
+                const form = document.getElementById('submitForm');
+                const sizeInput = document.getElementById('sizeInput')
+                const colorInput = document.getElementById('colorInput')
+
+                sizeInput.value = bike.size
+                colorInput.value = bike.color
+
+                form.submit()
             }
 
         </script>

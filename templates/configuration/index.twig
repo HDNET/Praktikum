@@ -80,5 +80,11 @@
             </li>
         </ul>
     </div>
-    <button onclick="buy()">Jetzt Kaufen</button>
+    <button onclick="buy()" style="cursor: pointer">Jetzt Kaufen</button>
+    <div>
+        <form id="submitForm" action="/form/submit">
+            <input type="hidden" id="sizeInput" name="size">
+            <input type="hidden" id="colorInput" name="color">
+        </form>
+    </div>
 {% endblock %}
