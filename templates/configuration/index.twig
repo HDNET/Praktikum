@@ -50,6 +50,18 @@
                     "22
                 </label>
             </li>
+
+            {#
+            {% for size in sizes %}
+                <li class="switch-item" onclick="changeSize('{{ size.value }}')">
+                    <input type="radio" name="size" id="size-20" class="screen-readers--only">
+                    <label for="size-20" class="switch-text">
+                        {{ size.label }}
+                    </label>
+                </li>
+            {% endfor %}
+            #}
+
         </ul>
         <!-- Color-Section -->
         <ul id="color" class="switch color" style="display: none">
@@ -78,6 +90,17 @@
 
                 </label>
             </li>
+
+            {#
+            {% for color in colors %}
+                <li class="switch-item" onclick="changeImage('{{ color.value }}')">
+                    <input type="radio" name="color" id="color-white" class="screen-readers--only">
+                    <label for="color-white" class="switch-text color-grey">
+
+                    </label>
+                </li>
+            {% endfor %}
+            #}
         </ul>
     </div>
     <button onclick="buy()" style="cursor: pointer">Jetzt Kaufen</button>
