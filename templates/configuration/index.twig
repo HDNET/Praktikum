@@ -9,40 +9,50 @@
             <p>Kontakt</p>
         </nav>
     </div>
-
-
     <header>
-        <!-- Aufgabe: Recherchiere, wie man Überschriften in html bezeichnet und finde heraus, welche du benötigst. Style Sie anschließend in der style.css -->
         <h1>Jetzt dein eigenes Fahrrad konfigurieren!</h1>
     </header>
     <div class="bike-selection">
         <aside class="selection-type">
-            <button>Größe</button>
-            <button>Rahmenfarbe</button>
-            <button>Gabel und Dämpfer</button>
-            <button>Schaltung</button>
-            <button>Sattel</button>
-            <button>Lenker etc.</button>
-            <button>Laufräder und Reifen</button>
-            <button>Zubehör</button>
+            <a href="#" onclick="showSelection('size')">Größe</a>
+            <a href="#" onclick="showSelection('color')">Rahmenfarbe</a>
         </aside>
         <section>
             <img alt="" src="img/red.png" id="bikeImg" class="bike-image">
         </section>
     </div>
 
-
-    <!-- Der folgende Block beinhaltet Radio-Button. Ließ dir dazu die Doku: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
-    Die Radio Buttons habe ich in sog. Listenelemente eingefügt (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul),
-    um sie leichter zu stylen. Du kannst die Stylings gerne einmal auskommentieren, um zu schauen wie sich die Listenelemente verhalten
-
-    Ausgerichtet werden die Elemente mit Flexboxen. Damit du weißt, welche Befehle du Anwenden musst, schaue gerne auf dieser
-    Website nach : https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-    (Da gucke ich bis heute auch noch drauf)
-    -->
-    <section class="selection--wrapper">
+    <div class="selection--wrapper">
+        <!-- size-section -->
+        <ul id="size" class="switch color" style="display: none">
+            <li class="switch-item" onclick="changeSize('19')">
+                <input type="radio" name="size" id="size-19" class="screen-readers--only" checked>
+                <label for="size-19" class="switch-text">
+                    "19
+                </label>
+                <div aria-hidden="true" class="active"></div>
+            </li>
+            <li class="switch-item" onclick="changeSize('20')">
+                <input type="radio" name="size" id="size-20" class="screen-readers--only">
+                <label for="size-20" class="switch-text">
+                    "20
+                </label>
+            </li>
+            <li class="switch-item" onclick="changeSize('21')">
+                <input type="radio" name="size" id="size-21" class="screen-readers--only">
+                <label for="size-21" class="switch-text">
+                    "21
+                </label>
+            </li>
+            <li class="switch-item" onclick="changeSize('22')">
+                <input type="radio" name="size" id="size-22" class="screen-readers--only">
+                <label for="size-22" class="switch-text">
+                    "22
+                </label>
+            </li>
+        </ul>
         <!-- Color-Section -->
-        <ul id="color" class="switch">
+        <ul id="color" class="switch color" style="display: none">
             <li class="switch-item" onclick="changeImage('red')">
                 <input type="radio" name="color" id="color-red" class="screen-readers--only" checked>
                 <label for="color-red" class="switch-text color-red">
@@ -69,5 +79,6 @@
                 </label>
             </li>
         </ul>
-    </section>
+    </div>
+    <button onclick="buy()">Jetzt Kaufen</button>
 {% endblock %}

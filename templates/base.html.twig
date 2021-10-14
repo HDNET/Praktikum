@@ -1,141 +1,166 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            <link rel="stylesheet" href="../style.css">
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>Dein RADieschen</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="../style.css">
+    {% endblock %}
 
-        {% block javascripts %}
-            <script>
+    {% block javascripts %}
+        <script>
+            function changeImage(string) {
+                if (string === 'red') {
+                    document.getElementById("bikeImg").src = "img/red.png"
+                }
+                if (string === 'blue') {
+                    document.getElementById("bikeImg").src = "img/blue.png"
+                }
+                if (string === 'green') {
+                    document.getElementById("bikeImg").src = "img/green.png"
+                }
+                if (string === 'grey') {
+                    document.getElementById("bikeImg").src = "img/white.png"
+                }
+                bike.color = string;
+            }
 
-                function changeImage(string) {
-                    if(string === 'red') {
-                        document.getElementById("bikeImg").src = "img/red.png"
-                        bike.color = 'red'
-                    }
-                    if(string === 'blue') {
-                        document.getElementById("bikeImg").src = "img/blue.png"
-                        bike.color = 'blue'
-                    }
-                    if(string === 'green') {
-                        document.getElementById("bikeImg").src = "img/green.png"
-                        bike.color = 'green'
-                    }
-                    if(string === 'grey') {
-                        document.getElementById("bikeImg").src = "img/white.png"
-                        bike.color = 'grey'
+            function changeSize(string) {
+                bike.size = string;
+            }
+
+            function showSelection(string) {
+                var x = document.getElementById(string);
+                if (string === 'color') {
+                    if (x.style.display === "none") {
+                        x.style.display = "inline-flex";
+                        document.getElementById('size').style.display = "none";
                     }
                 }
-
-                const bike = {
-                    size: string,
-                    color: string,
-                    fork: string,
-                    shift: string,
-                    saddle: string,
-                    handle: string,
-                    tires: string,
-                    custom: string | null,
+                if (string === 'size') {
+                    if (x.style.display === "none") {
+                        x.style.display = "inline-flex";
+                        document.getElementById('color').style.display = "none";
+                    }
                 }
-
-                function buy () {
-                    // fill form and submit it
-                }
-
-            </script>
-        {% endblock %}
-        <style>
-            .color-grey{background-color: slategrey;
-            }
-            .color-green{background-color: mediumseagreen;
-            }
-            .color-blue{background-color: mediumblue;
-            }
-            .color-red{background-color: darkred;
-            }
-            .selection-type{display: flex;
-                flex-direction: column;
-                background-color: #2D2D2D;
-                border-radius: 5px;
-                padding: 20px;
-                max-height: max-content;
-
-            }
-            .bike-selection{display: flex;
-
-            }
-            .content-navigation{display: flex;
-
-
-            }
-            .head-navigation{
-                display:flex ;
-                justify-content: space-between;
-
-            }
-            .switch label {
-                cursor: pointer;
-            }
-            .switch-item input:checked + label {
-                color: blue;
-                box-shadow:inset 4px 5px 12px 2px #000000;
-            }
-            .switch-item input:not(:checked) + label {
-                box-shadow: none;
-            }
-            .screen-readers--only {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                padding: 0;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                white-space: nowrap;
-                border-width: 0;
             }
 
-            .selection--wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 16px 0;
+            const bike = {
+                size: string,
+                color: string,
             }
 
-            .switch {
-                display: inline-flex;
-                align-items: center;
-                position: relative;
-                min-height: max-content;
-                padding: 20px;
-
-                background-color: #2D2D2D;
-                border-radius: 5px;
+            function buy() {
+                // fill form and submit it
             }
 
-            .switch-item {
-                display: flex;
-                position: relative;
+        </script>
+    {% endblock %}
+    <style>
+        .color-grey {
+            background-color: slategrey;
+        }
 
-                justify-content: center;
-            }
+        .color-green {
+            background-color: mediumseagreen;
+        }
 
-            .switch-text {
-                height: 50px;
-                width: 50px;
-                padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-                margin: 5px;
-                color: gray(100);
-                border-radius: 0.25rem;
-            }
+        .color-blue {
+            background-color: mediumblue;
+        }
 
-        </style>
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        .color-red {
+            background-color: darkred;
+        }
+
+        .selection-type {
+            display: flex;
+            flex-direction: column;
+            background-color: #2D2D2D;
+            border-radius: 5px;
+            padding: 20px;
+            max-height: max-content;
+
+        }
+
+        .bike-selection {
+            display: flex;
+
+        }
+
+        .content-navigation {
+            display: flex;
+
+
+        }
+
+        .head-navigation {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .switch label {
+            cursor: pointer;
+        }
+
+        .switch-item input:checked + label {
+            box-shadow: inset 4px 5px 12px 2px #000000;
+        }
+
+        .switch-item input:not(:checked) + label {
+            box-shadow: none;
+        }
+
+        .screen-readers--only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .selection--wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 16px 0;
+        }
+
+        .switch {
+            display: none;
+            align-items: center;
+            position: relative;
+            min-height: max-content;
+            padding: 20px;
+            background-color: #2D2D2D;
+            border-radius: 5px;
+        }
+
+        .switch-item {
+            display: flex;
+            position: relative;
+            justify-content: center;
+        }
+
+        .switch-text {
+            height: 50px;
+            width: 50px;
+            padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            color: gray(100);
+            border-radius: 0.25rem;
+        }
+
+    </style>
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
 </html>
