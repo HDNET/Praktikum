@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\ColorRepository;
+use App\Repository\SizeRepository;
 use App\Service\EmailService;
 use App\Service\QueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,14 +17,22 @@ class ConfigurationController extends AbstractController
 {
     private $queryService;
     private $emailService;
+    private $colorRepository;
+    private $sizeRepository;
 
     /**
      * ConfigurationController constructor.
      */
-    public function __construct(QueryService $queryService, EmailService $emailService)
+    public function __construct(
+        QueryService $queryService,
+        EmailService $emailService,
+        ColorRepository $colorRepository,
+        SizeRepository $sizeRepository)
     {
         $this->queryService = $queryService;
         $this->emailService = $queryService;
+        $this->colorRepository = $colorRepository;
+        $this->sizeRepository = $sizeRepository;
     }
 
 
@@ -32,8 +42,14 @@ class ConfigurationController extends AbstractController
      */
     public function index()
     {
-        // do some things
-        return $this->render('configuration/index.twig');
+        // TODO: Fetch data from repositories
+        // $this->colorRepository->
+        // $this->sizeRepository->
+
+        // TODO: assign data as context to template
+        $context = [];
+
+        return $this->render('configuration/index.twig', $context);
     }
 
     /**
@@ -53,8 +69,30 @@ class ConfigurationController extends AbstractController
          */
         $queryParams = $this->queryService->getQueryParameter($request);
 
+        // TODO: prepare context for the email template
+        /*
+         The templates needs two information:
+         size -> The size of the bike
+         color -> The color of the bike
+        */
+        $context = [];
+
+        // TODO: Set some Variables
+        // TODO: Set a variable for the email address which is the receiving email address
+        // TODO: Set a variable for the subject of the email
+        /*
+         * To send the email you can use the Email-Service
+         * $this->emailService
+         */
+
+        // TODO: Send the user back to the start route
+        /*
+         * To send a user to an another rout is called redirecting.
+         * The start route is simply '/'
+         * You can use the RedirectResponse for this.
+         */
         return new JsonResponse($queryParams);
-        // return new RedirectResponse('/'); // Redirect to another route
+        // return new RedirectResponse(); // Redirect to another route
     }
 
 }
