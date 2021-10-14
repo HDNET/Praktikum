@@ -1,6 +1,6 @@
 {
     "doctrine/annotations": {
-        "version": "1.0",
+        "version": "1.13",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
@@ -15,10 +15,10 @@
         "version": "1.2.1"
     },
     "egulias/email-validator": {
-        "version": "3.1.1"
+        "version": "3.1.2"
     },
     "psr/cache": {
-        "version": "2.0.0"
+        "version": "1.0.1"
     },
     "psr/container": {
         "version": "1.1.1"
@@ -27,10 +27,10 @@
         "version": "1.0.0"
     },
     "psr/log": {
-        "version": "2.0.0"
+        "version": "1.1.4"
     },
     "sensio/framework-extra-bundle": {
-        "version": "5.2",
+        "version": "6.2",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
@@ -87,7 +87,7 @@
         "version": "v5.3.7"
     },
     "symfony/flex": {
-        "version": "1.0",
+        "version": "1.17",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
@@ -107,14 +107,14 @@
             "ref": "414ba00ad43fa71be42c7906a551f1831716b03c"
         },
         "files": [
+            "config/services.yaml",
+            "config/routes/framework.yaml",
+            "config/preload.php",
             "config/packages/cache.yaml",
             "config/packages/framework.yaml",
-            "config/preload.php",
-            "config/routes/framework.yaml",
-            "config/services.yaml",
             "public/index.php",
-            "src/Controller/.gitignore",
-            "src/Kernel.php"
+            "src/Kernel.php",
+            "src/Controller/.gitignore"
         ]
     },
     "symfony/http-client-contracts": {
@@ -127,7 +127,7 @@
         "version": "v5.3.9"
     },
     "symfony/mailer": {
-        "version": "4.3",
+        "version": "5.3",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
@@ -171,8 +171,8 @@
             "ref": "44633353926a0382d7dfb0530922c5c0b30fae11"
         },
         "files": [
-            "config/packages/routing.yaml",
-            "config/routes.yaml"
+            "config/routes.yaml",
+            "config/packages/routing.yaml"
         ]
     },
     "symfony/runtime": {
