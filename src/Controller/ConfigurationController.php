@@ -13,8 +13,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/configuration")
+ */
 class ConfigurationController extends AbstractController
 {
+    protected const SENDER_EMAIL = 'configuration@YourBikeHD.com';
+
     private $queryService;
     private $emailService;
     private $colorRepository;
@@ -82,6 +87,7 @@ class ConfigurationController extends AbstractController
         // TODO: Set a variable for the subject of the email
         /*
          * To send the email you can use the Email-Service
+         * with the template 'emails/submitConfiguration.html.twig'
          * $this->emailService
          */
 
