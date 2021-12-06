@@ -4,8 +4,20 @@
 namespace App\Service;
 
 
+use App\Controller\BackendController;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\Request;
+
 class HashService
 {
+    protected Filesystem $filesystem;
+    protected QueryService $queryService;
+
+    public function __construct(Filesystem $filesystem, QueryService $queryService)
+    {
+        $this->filesystem = $filesystem;
+        $this->queryService = $queryService;
+    }
 
     /**
      * @param int $currentTime
@@ -20,4 +32,40 @@ class HashService
         return \hash($hashAlgo, $hashString);
     }
 
+    public function validateHash(Request $request): bool
+    {
+        // check if an query is available
+        if ($request->getQueryString()) {
+            // parse query params
+            $params = $this->queryService->getQueryParameter($request);
+            // check if hash identifier is available in query params
+            if (key_exists(BackendController::HASH_IDENTIFIER, $params)) {
+                // get hash
+                $hash = $params[BackendController::HASH_IDENTIFIER];
+                // generate file path from hash
+                $filePath = BackendController::HASH_FILES_BASE_URL . '/' . $hash . '.txt';
+                // check if file exist. If not the hash is not valid.
+                if (\file_exists($filePath)) {
+                    // get content from file
+                    $content = \file_get_contents($filePath);
+                    // parse content to array
+                    $content = explode(';', $content);
+                    // check if link is expired
+                    if (
+                        time() < intval($content[2]) &&
+                        intval($content[4]) + 1 <= intval($content[3])
+                    ) {
+                        // increase number of link calls
+                        $content[4] = intval($content[4]) + 1;
+                        // write new infos to file
+                        $this->filesystem->dumpFile($filePath, implode(';', $content));
+                        // activate download button
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 }

@@ -1,0 +1,9 @@
+{% set flash_types = ['success', 'danger'] %}
+
+{% for flash_type in flash_types %}
+    {% for message in app.flashes([id, '-', flash_type]|join) %}
+        <div class="alert alert-{{ flash_type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}

@@ -7,21 +7,27 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\FormType\ContactType;
 use App\Service\EmailService;
+use App\Service\HashService;
 use App\Service\QueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
+    public const CV_ASSETDIR = '../assets';
+    public const CV_ASSETFILENAME = 'Steckbrief.pdf';
     protected const EMAIL_ADDRESS = 'florian.patruck@hdnet.de';
     protected EmailService $emailService;
+    protected HashService $hashService;
 
-    public function __construct(EmailService $emailService)
+    public function __construct(EmailService $emailService, HashService $hashService)
     {
         $this->emailService = $emailService;
+        $this->hashService = $hashService;
     }
 
     /**
@@ -70,42 +76,28 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        // check if an query is available
-        if ($request->getQueryString()) {
-            // parse query params
-            $params = $queryService->getQueryParameter($request);
-            // check if hash identifier is available in query params
-            if (key_exists(BackendController::HASH_IDENTIFIER, $params)) {
-                // get hash
-                $hash = $params[BackendController::HASH_IDENTIFIER];
-                // generate file path from hash
-                $filePath = BackendController::HASH_FILES_BASE_URL . '/' . $hash . '.txt';
-                // check if file exist. If not the hash is not valid.
-                if (\file_exists($filePath)) {
-                    // get content from file
-                    $content = \file_get_contents($filePath);
-                    // parse content to array
-                    $content = explode(';', $content);
-                    // check if link is expired
-                    if (
-                        time() < intval($content[2]) &&
-                        intval($content[4]) + 1 <= intval($content[3])
-                    ) {
-                        // increase number of link calls
-                        $content[4] = intval($content[4]) + 1;
-                        // write new infos to file
-                        $filesystem->dumpFile($filePath, implode(';', $content));
-                        // activate download button
-                        $showDownloadButton = true;
-                    }
-                }
-            }
-        }
+        $showDownloadButton = $this->hashService->validateHash($request);
 
         // render template
         return $this->renderForm('landingpage/index.html.twig', [
             'form' => $form,
             'showDownloadButton' => $showDownloadButton,
         ]);
+    }
+
+    /**
+     * @Route("/downloadCv", name="downloadCv")
+     */
+    public function getUploadedCv(Filesystem $filesystem, Request $request): Response
+    {
+        if (!$this->hashService->validateHash($request)) {
+            return new Response('Not authorized', Response::HTTP_FORBIDDEN);
+        }
+
+        $filename = self::CV_ASSETDIR.\DIRECTORY_SEPARATOR.self::CV_ASSETFILENAME;
+        if (!$filesystem->exists($filename)) {
+            return new Response('File not set yet!', Response::HTTP_NOT_FOUND);
+        }
+        return new BinaryFileResponse($filename);
     }
 }

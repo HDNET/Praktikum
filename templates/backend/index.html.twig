@@ -22,4 +22,13 @@
             <h3>Generierter Link:</h3> {{ generatedLink }}
         {% endif %}
     </div>
+    <div>
+        <h2>Deinen Steckbrief hochladen</h2>
+        <form action="/admin/uploadCv" method="post" enctype="multipart/form-data">
+            <label for="cvFile">Lebenslauf (PDF-Datei)</label>
+            <input type="file" name="cvFile" id="cvFile" required>
+            <input type="submit" value="Hochladen" name="Hochladen">
+        </form>
+        {% include 'components/flash_message.html.twig' with {'id': 'upload'} %}
+    </div>
 {% endblock %}
