@@ -49,8 +49,8 @@ class BackendController extends AbstractController
         $dayMultiplier = 60*60*24;
         $expireTime = $currentTime + $dayMultiplier * $params['expiresInDays'];
         // Syntax:
-        //      dayExpirationTime;callExpirationNumber;numberOfCalls
-        $data = $expireTime . ';' . $params['expiresInLinkCalls'] . ';0';
+        //      currentTime;recipient;dayExpirationTime;callExpirationNumber;numberOfCalls
+        $data = $currentTime . ';' . $recipient . ';' . $expireTime . ';' . $params['expiresInLinkCalls'] . ';0';
 
         // append data to file
         $filesystem->appendToFile('../sharedLinks/' . $hash . '.txt', $data);
