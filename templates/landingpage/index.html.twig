@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}
+    Praktikum
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+    </script>
+{% endblock %}
+
+{% block body %}
+    {#
+        {{ include('components/ImageBanner.html.twig') }}
+    #}
+    {{ include('components/contact_form.html.twig') }}
+{% endblock %}
