@@ -19,9 +19,7 @@
         {{ include('components/ImageBanner.html.twig') }}
     #}
 
-    {% if showDownloadButton %}
-        Show Download Button
-    {% endif %}
+    {{ include('components/cv_download_button.html.twig') }}
 
     {{ include('components/contact_form.html.twig') }}
 {% endblock %}

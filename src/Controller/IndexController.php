@@ -82,6 +82,7 @@ class IndexController extends AbstractController
         return $this->renderForm('landingpage/index.html.twig', [
             'form' => $form,
             'showDownloadButton' => $showDownloadButton,
+            'hash' => $this->hashService->getHash($request),
         ]);
     }
 
