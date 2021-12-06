@@ -14,7 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class BackendController extends AbstractController
 {
 
-    protected const COOKIE_IDENTIFIER = 'BE_LOGIN';
+    public const HASH_IDENTIFIER = 'hash';
+    public const HASH_FILES_BASE_URL = '../sharedLinks';
 
     /**
      * @Route("/admin", name="Admin")
@@ -34,7 +35,7 @@ class BackendController extends AbstractController
         var_dump($params);
 
         // generate Folder if not exist
-        $filesystem->mkdir('../sharedLinks');
+        $filesystem->mkdir(self::HASH_FILES_BASE_URL);
 
         // build hash
         $currentTime = time();
@@ -43,7 +44,7 @@ class BackendController extends AbstractController
         $hash = hash('sha256', $hashString);
 
         // create file with hash as filename
-        $filesystem->touch('../sharedLinks/' . $hash . '.txt');
+        $filesystem->touch(self::HASH_FILES_BASE_URL . '/' . $hash . '.txt');
 
         // build data for File
         $dayMultiplier = 60*60*24;
@@ -53,10 +54,10 @@ class BackendController extends AbstractController
         $data = $currentTime . ';' . $recipient . ';' . $expireTime . ';' . $params['expiresInLinkCalls'] . ';0';
 
         // append data to file
-        $filesystem->appendToFile('../sharedLinks/' . $hash . '.txt', $data);
+        $filesystem->appendToFile(self::HASH_FILES_BASE_URL . '/' . $hash . '.txt', $data);
 
         // create link
-        $generatedLink = 'https://localhost:8888?hash=' . $hash;
+        $generatedLink = 'http://localhost:8888?' . self::HASH_IDENTIFIER . '=' . $hash;
 
         return $this->render('/backend/index.html.twig', ['user' => $this->getUser(), 'generatedLink' => $generatedLink]);
     }
