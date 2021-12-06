@@ -1,0 +1,34 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hallo {{ user }}</h1>
+    <p>Das is dein backend. Hier kannst du ein paar Dinge erledigen.</p>
+    <div>
+        <h2>Deinen Steckbrief teilen</h2>
+        <form action="/admin/generateLink">
+            <label for="recipient">Empfänger des Links:</label>
+            <input type="text" name="recipient" id="recipient" placeholder="Für wen ist der Link?" required>
+            <br>
+            <label for="expiresInDays">Link ist ungültig in wie vielen Tagen ?</label>
+            <input type="number" name="expiresInDays" id="expiresInDays" value="30" required>
+            <br>
+            <label for="expiresInLinkCalls">Link ist ungültig nach wie vielen Aufrufen ?</label>
+            <input type="number" name="expiresInLinkCalls" id="expiresInLinkCalls" value="20" required>
+            <br>
+            <input type="submit" value="Generieren">
+        </form>
+        {% if generatedLink %}
+            <h3>Generierter Link:</h3> {{ generatedLink }}
+        {% endif %}
+    </div>
+    <div>
+        <h2>Deinen Steckbrief hochladen</h2>
+        <form action="/admin/uploadCv" method="post" enctype="multipart/form-data">
+            <label for="cvFile">Lebenslauf (PDF-Datei)</label>
+            <input type="file" name="cvFile" id="cvFile" required>
+            <input type="submit" value="Hochladen" name="Hochladen">
+        </form>
+        {% include 'components/flash_message.html.twig' with {'id': 'upload'} %}
+    </div>
+{% endblock %}
