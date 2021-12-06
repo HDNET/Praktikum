@@ -8,3 +8,4 @@
 /var/
 .idea
 ###< symfony/framework-bundle ###
+./sharedLinks/
