@@ -49,7 +49,7 @@ class ConfigurationController extends AbstractController
         // TODO: assign data as context to template
         $context = [];
 
-        return $this->render('configuration/index.twig', $context);
+        return $this->render('landingpage/index.twig', $context);
     }
 
     /**
