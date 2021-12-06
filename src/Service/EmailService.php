@@ -4,6 +4,7 @@
 namespace App\Service;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 
 class EmailService
@@ -19,13 +20,13 @@ class EmailService
         $this->mailer = $mailer;
     }
 
-    public function sendMail(string $receiverEmailAddress, string $subject, array $context): void
+    public function sendMail(string $senderEmailAddress, string $receiverEmailAddress, string $subject, string $template, array $context): void
     {
         $email = (new TemplatedEmail())
-            ->from('configuration@YourBikeHD.com')
+            ->from($senderEmailAddress)
             ->to($receiverEmailAddress)
             ->subject($subject)
-            ->htmlTemplate('emails/submitConfiguration.html.twig')
+            ->htmlTemplate($template)
             ->context($context);
 
         $this->mailer->send($email);

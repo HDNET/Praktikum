@@ -21,5 +21,8 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    App\Controller\BackendController:
+        arguments:
+            $baseUrl: 'http://localhost:8888'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

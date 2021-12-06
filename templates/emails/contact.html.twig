@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <p>Hallo Du,</p>
+
+    <p>ein Unternehmen möchte über deine Landingpage in Kontakt mit dir treten.</p>
+    <ul>
+        <li>Name: {{ name }}</li>
+        <li>Email: <a href="mailto:{{ from }}">{{ from }}</a></li>
+        <li>Nachricht:
+            <br>
+            <span>{{ message }}</span>
+        </li>
+    </ul>
+{% endblock %}
