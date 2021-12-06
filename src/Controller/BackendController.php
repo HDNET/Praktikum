@@ -34,16 +34,29 @@ class BackendController extends AbstractController
         var_dump($params);
 
         // generate Folder if not exist
-        $filesystem->mkdir('../shardLinks');
+        $filesystem->mkdir('../sharedLinks');
 
+        // build hash
         $currentTime = time();
         $recipient = $params['recipient'];
+        $hashString = $recipient . $currentTime;
+        $hash = hash('sha256', $hashString);
 
+        // create file with hash as filename
+        $filesystem->touch('../sharedLinks/' . $hash . '.txt');
 
+        // build data for File
+        $dayMultiplier = 60*60*24;
+        $expireTime = $currentTime + $dayMultiplier * $params['expiresInDays'];
+        // Syntax:
+        //      dayExpirationTime;callExpirationNumber;numberOfCalls
+        $data = $expireTime . ';' . $params['expiresInLinkCalls'] . ';0';
 
+        // append data to file
+        $filesystem->appendToFile('../sharedLinks/' . $hash . '.txt', $data);
 
-
-        $generatedLink = 'hammer krasser link';
+        // create link
+        $generatedLink = 'https://localhost:8888?hash=' . $hash;
 
         return $this->render('/backend/index.html.twig', ['user' => $this->getUser(), 'generatedLink' => $generatedLink]);
     }
