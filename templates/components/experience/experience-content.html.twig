@@ -40,12 +40,12 @@
         <img class="experience-content-img" src="{{ asset(item.img) }}">
 
         <span class="experience-content-text">
-            <h3> {{ asset(item.headline) }}</h3>
-            <p class="color-primary-normal"> {{ asset(item.content) }}</p>
+            <h3> {{ item.headline }}</h3>
+            <p class="color-primary-normal"> {{ item.content }}</p>
             {% if item.link is defined %}
                 <div class="experiene-content-link">
                     <img src="{{ asset('svg/union.svg') }}" width="16px">
-                    <a href="{{ asset(item.link) }}" class="color-primary-light"> {{ asset(item.linkText) }}</a>
+                    <a href="{{ item.link }}" class="color-primary-light"> {{ item.linkText }}</a>
                 </div>
             {% endif %}
         </span>
