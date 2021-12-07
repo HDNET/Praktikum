@@ -86,6 +86,16 @@
 
             </div>
         </div>
+        <div class="row mb-4">
+            <div class="col">
+                <h2 class="mb-3">Deinen Lebenslauf löschen</h2>
+                <div class="alert alert-info" role="alert">
+                    Du musst deinen Lebenslauf nicht erst löschen um einen neuen Hochzuladen. Einfach einen neuen
+                    Hochladen und der alte wird ersetzt.
+                </div>
+                <button class="btn btn-outline-danger" onclick="removeUploadedCV('{{ path('removeCV') }}')">Lebenslauf löschen.</button>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -94,6 +104,12 @@
         const setLinkToClipBoard = (generatedLink) => {
             navigator.clipboard.writeText(generatedLink)
             document.getElementById('linkCopiedMessage').classList.add('active')
+        }
+
+        const removeUploadedCV = (url) => {
+            if(confirm('Lebenslauf wirklich löschen?')) {
+                window.location.replace(url)
+            }
         }
     </script>
 {% endblock %}
