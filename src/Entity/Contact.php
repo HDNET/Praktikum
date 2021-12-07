@@ -4,11 +4,26 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class Contact
 {
+    /**
+     * @Assert\NotBlank
+     */
     protected string $name = '';
+    /**
+     * @Assert\NotBlank
+     * @Assert\Email
+     */
     protected string $email = '';
+    /**
+     * @Assert\NotBlank
+     */
     protected string $subject = '';
+    /**
+     * @Assert\NotBlank
+     */
     protected string $message = '';
 
     public function __construct()
