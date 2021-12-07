@@ -1,0 +1,5 @@
+name: praktikum
+recipe: lamp
+config:
+  webroot: public
+  php: 7.4

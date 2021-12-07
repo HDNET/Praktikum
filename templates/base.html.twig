@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Praktikum</title>
+    <title>{% block title %}Praktikum{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="style.css">
     {% endblock %}
@@ -18,7 +18,6 @@
 </head>
 <body>
 {% block body %}
-{{ include('landingpage/components/ImageBanner.html.twig') }}
 {% endblock %}
 </body>
 </html>
