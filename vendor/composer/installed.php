@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '0941ca408492d0a1471b381e8efe11b7275adcd5',
+    'reference' => 'b8fcadcc6fa8f2c0347d020bf552a080b71058bb',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '0941ca408492d0a1471b381e8efe11b7275adcd5',
+      'reference' => 'b8fcadcc6fa8f2c0347d020bf552a080b71058bb',
     ),
     'doctrine/annotations' => 
     array (

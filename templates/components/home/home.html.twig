@@ -1,0 +1,68 @@
+{% block style %}
+    <style>
+        .home {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .home-element {
+            background-image:url({{ asset('img/Profilpicture.jpg') }});
+            padding: 0 32px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-content: space-between;
+            align-items: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .element--text {
+            padding: 150px 32px;
+        }
+
+        .social-media {
+            margin-top: auto;
+            margin-bottom:  32px;
+        }
+
+        .social-media--a {
+            padding: 0 32px;
+        }
+
+        .download {
+            margin-top: auto;
+            margin-bottom: 64px;
+        }
+
+        @media screen and (max-width: 1020px) {
+            .site-content {
+                padding-top: 75px;
+                padding-bottom: 75px;
+            }
+        }
+        @media screen and (max-width: 1360px) {
+            .site-content {
+                margin-left: 90px;
+                width: calc(100% - 90px);
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="home" class="home">
+        <div class="home-element">
+            <h1 class="text-center">Maria <br/> Mustermann</h1>
+            {% if showDownloadButton %}
+                <a href="{{ path('downloadCv', {'hash': hash}) }}" target="_blank"><button type="button" class="download btn btn-primary bold">Bewerbung herunterladen</button></a>
+            {% endif %}
+            <div class="social-media">
+                <a href="#" class="social-media--a color-primary-light bold"> INSTAGRAM </a>
+                <a href="#" class="social-media--a color-primary-light bold"> LINKEDIN </a>
+                <a href="#" class="social-media--a color-primary-light bold"> TWITTER </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
