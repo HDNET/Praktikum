@@ -9,6 +9,7 @@
 :root {
     --color-primary-dark: 48,52,43;
     --color-primary-darker: 31,37,29;
+    --color-primary-normal: 146, 162, 134;
     --color-primary-light: 185,219,113;
     --color-primary-lighter: 246,254,241;
 
@@ -38,6 +39,10 @@
     color: rgb(var(--color-primary-lighter));
 }
 
+.color-primary-normal {
+    color: rgb(var(--color-primary-normal));
+}
+
 .text-center {
     text-align: center;
 }
@@ -64,6 +69,7 @@ p {
     font-weight: var(--font-normal);
     color: rgb(var(--color-primary-lighter));
     font-size: 18px;
+    line-height: 167%;
 }
 
 a {

@@ -21,14 +21,15 @@
 
         .hobby-element{
             max-width: 1024px;
-            display: flex;
+            display: grid;
+            grid-template-columns: 60% auto;
             grid-gap: 32px;
         }
         .hobby-cards{
             display: grid;
             grid-gap: 32px;
             width: 100%;
-            grid-template-columns: repeat(2, auto);
+            grid-template-columns: repeat(2, 50%);
         }
 
         .hobby-text {
@@ -40,23 +41,28 @@
 <body>
 {% block body %}
     {% set hobbies = [
-        {'headline': 'Hobby1',
-        'content': 'Lorem Ipsum',
+        {'headline': 'Umwelt',
+        'content': 'In meiner Freizeit verbringe ich gerne Zeit in der Natur und informiere mich über den Klimaschutz, sowie mir unbekannte Planzenarten.',
         'icon': 'svg/nature.svg'},
-        {'headline': 'Hobby2',
-            'content': 'Lorem Ipsum'},
-        {'headline': 'Hobby3',
-            'content': 'Lorem Ipsum'},
-        {'headline': 'Hobby4',
-            'content': 'Lorem Ipsum'},
+        {'headline': 'Fotografie',
+            'content': 'Während ich unterwegs bin schieße ich gerne mit meiner Canon 500D Bilder von der Natur und von schönen Momenten und Kulissen',
+            'icon': 'svg/camera.svg'},
+        {'headline': 'Mode',
+            'content': 'Ich drücke mich gerne mit meinem Kleidungsstyle aus und beschäftige mich mit neuen Trends in der Mode Branche.',
+            'icon': 'svg/clothing.svg'
+        },
+        {'headline': 'Programmieren',
+            'content': 'In der Schule, sowie auch in meiner Freizeit, bereitet mir das Programmieren mit HTML, CSS und JavaScript viel Freude.',
+            'icon': 'svg/code.svg'},
     ] %}
 
     <div class="hobby">
-        <div class="hobby-element"><span class="hobby-cards">
-            {% for item in hobbies %}
-                {% include 'components/card.html.twig' with item %}
-            {% endfor %}
-        </span>
+        <div class="hobby-element">
+            <span class="hobby-cards">
+                {% for item in hobbies %}
+                    {% include 'components/card.html.twig' with item %}
+                {% endfor %}
+            </span>
             <span class="hobby-text">Lorem Ipsum</span></div>
     </div>
 {% endblock %}

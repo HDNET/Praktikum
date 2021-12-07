@@ -18,8 +18,13 @@
         }
 
         .card-content {
-            padding: 24px;
+            padding: 32px 32px 50px 32px;
             color: rgb(var(--color-primary-lighter));
+        }
+
+        .card-content--icon {
+            min-height: 60px;
+            
         }
     </style>
 </head>
@@ -28,10 +33,12 @@
     <div class="card">
         <div class="card-content">
             {% if item.icon is defined %}
-                <img src="{{ asset(item.icon)  }}" width="60px">
+                <div class="card-content--icon">
+                    <img src="{{ asset(item.icon) }}" width="60px">
+                </div>
             {% endif %}
             <h3>{{ item.headline }} </h3>
-            <p> {{ item.content }}</p>
+            <p class="light color-primary-normal"> {{ item.content }}</p>
         </div>
     </div>
 {% endblock %}
