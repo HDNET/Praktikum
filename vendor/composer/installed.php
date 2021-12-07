@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '817a03af0fb77e5ad83d08806898cc4cce6ba878',
+        'reference' => '69a11556cf0aa6678176adb495a2361f38e18ea0',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '817a03af0fb77e5ad83d08806898cc4cce6ba878',
+            'reference' => '69a11556cf0aa6678176adb495a2361f38e18ea0',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -517,6 +517,15 @@
             'reference' => '9ffaaba53c61ba75a3c7a3a779051d1e9ec4fd2d',
             'dev_requirement' => false,
         ),
+        'symfony/translation' => array(
+            'pretty_version' => 'v5.3.11',
+            'version' => '5.3.11.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/translation',
+            'aliases' => array(),
+            'reference' => '17a965c8f3b1b348cf15d903ac53942984561f8a',
+            'dev_requirement' => false,
+        ),
         'symfony/translation-contracts' => array(
             'pretty_version' => 'v2.5.0',
             'version' => '2.5.0.0',
@@ -525,6 +534,12 @@
             'aliases' => array(),
             'reference' => 'd28150f0f44ce854e942b671fc2620a98aae1b1e',
             'dev_requirement' => false,
+        ),
+        'symfony/translation-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '2.3',
+            ),
         ),
         'symfony/twig-bridge' => array(
             'pretty_version' => 'v5.4.0',
