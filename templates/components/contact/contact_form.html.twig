@@ -90,16 +90,64 @@
                 padding: 16px;
             }
         }
+
+        .contact-heading {
+            margin-bottom: 4rem;
+        }
+        .contact-element {
+            max-width: 1024px;
+            display: grid;
+            grid-template-columns: 30% auto;
+            grid-gap: 8px;
+        }
+        .contact-form {
+            width: auto;
+            padding: 0 32px;
+        }
+
+        @media screen and (max-width: 1020px) {
+            .contact-element {
+                display: flex;
+                flex-direction: column;
+            }
+            .contact-text {
+                margin-bottom: 4rem;
+            }
+            .contact-form {
+                padding: 0;
+            }
+        }
+
+        @media screen and (max-width: 650px){
+            .contact {
+                min-height: max-content !important;
+                padding: 16px;
+            }
+            .contact-form {
+                padding: 0;
+            }
+            .contact-text {
+                padding: 0 16px;
+            }
+        }
     </style>
 {% endblock %}
 
 {% block body %}
 <section class="contact">
-    <h2 class="bold color-primary-light">KONTAKT</h2>
+    <h2 class="bold color-primary-light contact-heading">KONTAKT</h2>
+    <div class="contact-element">
+        <span class="contact-text">
+            <p class="light color-primary-normal">
+                Hier können Sie in Kontakt mit mir treten:
+            </p>
+        </span>
+        <span class="contact-form">
+            {% form_theme form 'form/contact_form.html.twig' %}
+            {{ form(form) }}
 
-    {% form_theme form 'form/contact_form.html.twig' %}
-    {{ form(form) }}
-
-    {% include 'components/flash_message.html.twig' with {'id': 'contact'} %}
+            {% include 'components/flash_message.html.twig' with {'id': 'contact'} %}
+        </span>
+    </div>
 </section>
 {% endblock %}
