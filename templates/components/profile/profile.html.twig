@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Praktikum</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('style.css') }}">
-    {% endblock %}
+{% block javascripts %}
+    <script>
 
-    {% block javascripts %}
-        <script>
-
-        </script>
-    {% endblock %}
+    </script>
+{% endblock %}
+{% block style %}
     <style>
         #plant-profile {
 
@@ -30,8 +22,7 @@
             }
         }
     </style>
-</head>
-<body>
+{% endblock %}
 {% block body %}
 <div id="plant-profile">
     <div class="infogroup">
@@ -54,5 +45,3 @@
     </div>
 </div>
 {% endblock %}
-</body>
-</html>

@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Praktikum</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="style.css">
-    {% endblock %}
+{% extends 'base.html.twig' %}
 
-    {% block javascripts %}
-        <script>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+{% endblock %}
 
-        </script>
-    {% endblock %}
+{% block javascripts %}
+    {{ block('javascripts', 'components/navigation/navigation.html.twig') }}
+{% endblock %}
+
+{% block style %}
     <style>
         #content {
             margin-left: 380px;
             width: calc(100% - 380px);
-        }
-        @media screen and (max-width: 1599px) {
-            #content {
-                margin-left: 320px;
-                width: calc(100% - 320px);
-            }
         }
 
         @media screen and (max-width: 1360px){
@@ -37,16 +28,20 @@
                 width: 100%;
             }
         }
-
+        
     </style>
-</head>
-<body>
+
+    {{ block('style', 'components/navigation/navigation.html.twig') }}
+    {{ block('style', 'components/home/home.html.twig') }}
+    {{ block('style', 'components/hobby/hobby.html.twig') }}
+    {{ block('style', 'components/contact/contact_form.html.twig') }}
+{% endblock %}
+
 {% block body %}
-    {{ include('components/navigation/navigation.html.twig') }}
+    {{ block('body', 'components/navigation/navigation.html.twig') }}
     <div id="content">
-        {{ include('components/home/home.html.twig') }}
-        {{ include('components/hobby/hobby.html.twig') }}
+        {{ block('body', 'components/home/home.html.twig') }}
+        {{ block('body', 'components/hobby/hobby.html.twig') }}
+        {{ block('body', 'components/contact/contact_form.html.twig') }}
     </div>
 {% endblock %}
-</body>
-</html>

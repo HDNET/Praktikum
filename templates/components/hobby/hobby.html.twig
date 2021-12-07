@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Praktikum</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" {{ asset('style.css') }}>
-    {% endblock %}
-
-    {% block javascripts %}
-        <script>
-
-        </script>
-    {% endblock %}
+{% block style %}
     <style>
         .hobby {
             background-color: rgb(var(--color-primary-darker));
@@ -58,8 +45,8 @@
             }
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
 {% block body %}
     {% set hobbies = [
         {'headline': 'Umwelt',
@@ -92,5 +79,3 @@
         </div>
     </div>
 {% endblock %}
-</body>
-</html>

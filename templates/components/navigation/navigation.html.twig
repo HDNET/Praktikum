@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Praktikum</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('style.css') }}">
-    {% endblock %}
+{% block javascripts %}
+    <script>
+        function onNav() {
+            var element = document.getElementById("toggle");
+            element.classList.toggle("toggle--on");
 
-    {% block javascripts %}
-        <script>
-            function onNav() {
-                var element = document.getElementById("toggle");
-                element.classList.toggle("toggle--on");
-
-                var navigation = document.getElementById("menu-holder");
-                navigation.classList.toggle("toggle--on");
-            }
-
-        </script>
-    {% endblock %}
+            var navigation = document.getElementById("menu-holder");
+            navigation.classList.toggle("toggle--on");
+        }
+    </script>
+{% endblock %}
+{% block style %}
     <style>
         .nav-points {
             color: rgb(var(--color-primary-lighter));
@@ -172,8 +163,7 @@
             }
         }
     </style>
-</head>
-<body>
+{% endblock %}
 {% block body %}
     <header class="header-holder">
         <div class="toggle-holder">
@@ -203,5 +193,3 @@
         {{ include('components/profile/profile.html.twig') }}
     </header>
 {% endblock %}
-</body>
-</html>
