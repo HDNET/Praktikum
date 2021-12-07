@@ -26,7 +26,7 @@ class BackendController extends AbstractController
     /**
      * The base path, where the hash files are located
      */
-    public const HASH_FILES_BASE_URL = '../sharedLinks';
+    public const HASH_FILES_BASE_URL = '../uploads/sharedLinks';
 
     /** @var string $baseUrl The base url/ base domain */
     protected $baseUrl;
@@ -97,7 +97,7 @@ class BackendController extends AbstractController
             }
 
             // Set the destination path where the file should be moved to, so that one is later able to download the file
-            $oldCvFilename = IndexController::CV_ASSETDIR . \DIRECTORY_SEPARATOR . IndexController::CV_ASSETFILENAME;
+            $oldCvFilename = IndexController::CV_ASSET_DIR . \DIRECTORY_SEPARATOR . IndexController::CV_ASSET_FILENAME;
             if ($filesystem->exists($oldCvFilename)) {
                 $filesystem->remove($oldCvFilename);
             }
@@ -119,9 +119,9 @@ class BackendController extends AbstractController
             if ($file->getMimeType() != 'application/pdf') {
                 throw new \Exception('Die hochgeladene Datei muss eine PDF Datei sein!');
             }
-
+            
             // Move the file where it can be downloaded
-            $file->move(IndexController::CV_ASSETDIR, IndexController::CV_ASSETFILENAME);
+            $file->move(IndexController::CV_ASSET_DIR, IndexController::CV_ASSET_FILENAME);
         } catch (\Exception $e) {
             // If an error occurs, show it to the user and send the result
             $this->addFlash('upload-danger', $e->getMessage());

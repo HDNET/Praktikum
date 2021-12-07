@@ -24,5 +24,10 @@ services:
     App\Controller\BackendController:
         arguments:
             $baseUrl: 'http://localhost:8888'
+
+    App\Controller\IndexController:
+        arguments:
+            $reciverEmailAddress: 'praktikum@hdnet.de'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
