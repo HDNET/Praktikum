@@ -65,7 +65,9 @@
     <section id="home" class="home">
         <div class="home-element">
             <h1 class="text-center">Maria <br/> Mustermann</h1>
-            <button type="button" class="download btn btn-primary bold">Bewerbung herunterladen</button>
+            {% if showDownloadButton %}
+                <a href="{{ path('downloadCv', {'hash': hash}) }}" target="_blank"><button type="button" class="download btn btn-primary bold">Bewerbung herunterladen</button></a>
+            {% endif %}
             <div class="social-media">
                 <a href="#" class="social-media--a primary-light bold"> INSTAGRAM </a>
                 <a href="#" class="social-media--a primary-light bold"> LINKEDIN </a>
