@@ -40,6 +40,10 @@
     color: rgb(var(--color-primary-normal));
 }
 
+.color-primary-dark {
+    color: rgb(var(--color-primary-dark));
+}
+
 .text-center {
     text-align: center;
 }
