@@ -9,6 +9,7 @@ use App\Service\QueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -132,4 +133,23 @@ class BackendController extends AbstractController
         $this->addFlash('upload-success', 'Der Steckbrief wurde erfolgreich hochgeladen!');
         return $this->redirectToRoute('Admin');
     }
+
+    /**
+     * @Route("/removeCV", name="removeCV")
+     * @param Filesystem $filesystem
+     * @return Response
+     */
+    public function removeUploadedCV(Filesystem $filesystem): Response
+    {
+        //  build the filename
+        $filename = IndexController::CV_ASSET_DIR . DIRECTORY_SEPARATOR . IndexController::CV_ASSET_FILENAME;
+        // check if file with filename exists
+        if($filesystem->exists($filename)) {
+            // remove file
+            $filesystem->remove($filename);
+        }
+        // redirect to backend
+        return $this->redirectToRoute('Admin');
+    }
+
 }
