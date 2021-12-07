@@ -1,4 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+
 *{
     margin: 0px;
     padding: 0;
+}
+
+:root {
+    --color-primary-dark: 48,52,43;
+    --color-primary-darker: 31,37,29;
+    --color-primary-light: 185,219,113;
+    --color-primary-lighter: 246,254,241;
+
+    --font-family-base: 'Poppins', sans-serif;
+    --font-bold: 700;
+    --font-normal: 500;
+    --font-light: 300;
+
+    --font-size-base: 18px;
+
+    --border-radius-button: 0px;
+}
+
+.bold {
+    font-weight: var(--font-bold);
+}
+
+.light {
+    font-weight: var(--font-light);
+}
+
+.primary-light {
+    color: rgb(var(--color-primary-light))
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1 {
+    font-family: var(--font-family-base);
+    font-weight: var(--font-bold);
+    color: rgb(var(--color-primary-light));
+    font-size: 80px;
+}
+
+p {
+    font-family: var(--font-family-base);
+    font-weight: var(--font-normal);
+    color: rgb(var(--color-primary-lighter));
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    font-family: var(--font-family-base);
+    font-weight: var(--font-normal);
+}
+
+.btn {
+    padding: 16px;
+    border-radius: var(--border-radius-button);
+    font-family: var(--font-family-base);
+    border: none;
+}
+
+.btn-primary {
+    background-color: rgb(var(--color-primary-light));
+    color: rgb(var(--color-primary-dark));
 }

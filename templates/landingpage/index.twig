@@ -13,12 +13,26 @@
         </script>
     {% endblock %}
     <style>
+        #content {
+            margin-left: 380px;
+            width: calc(100% - 380px);
+        }
+        @media screen and (max-width: 1599px) {
+            #content {
+                margin-left: 320px;
+                width: calc(100% - 320px);
+            }
+        }
 
     </style>
 </head>
 <body>
 {% block body %}
-
+    {{ include('components/navigation/navigation.html.twig') }}
+    <div id="content">
+        {{ include('components/home/home.html.twig') }}
+        {{ include('components/hobby/hobby.html.twig') }}
+    </div>
 {% endblock %}
 </body>
 </html>

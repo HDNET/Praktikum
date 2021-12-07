@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Praktikum</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="../../../public/style.css">
+    {% endblock %}
+
+    {% block javascripts %}
+        <script>
+
+        </script>
+    {% endblock %}
+    <style>
+        .home {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .home-element {
+            background:rgb(var(--color-primary-dark));
+            padding: 0 32px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-content: space-between;
+            align-items: center;
+        }
+
+        .element--text {
+            padding: 150px 32px;
+        }
+
+        .social-media {
+            margin-bottom:  32px;
+        }
+
+        .social-media--a {
+            padding: 0 32px;
+        }
+
+        .download {
+            margin-top: auto;
+            margin-bottom: 64px;
+        }
+
+        @media screen and (max-width: 1020px) {
+            .site-content {
+                padding-top: 75px;
+                padding-bottom: 75px;
+            }
+        }
+        @media screen and (max-width: 1360px) {
+            .site-content {
+                margin-left: 90px;
+                width: calc(100% - 90px);
+            }
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+    <section id="home" class="home">
+        <div class="home-element">
+            <h1 class="text-center">Maria <br/> Mustermann</h1>
+            <button type="button" class="download btn btn-primary bold">Bewerbung herunterladen</button>
+            <div class="social-media">
+                <a href="#" class="social-media--a primary-light bold"> INSTAGRAM </a>
+                <a href="#" class="social-media--a primary-light bold"> LINKEDIN </a>
+                <a href="#" class="social-media--a primary-light bold"> TWITTER </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+</body>
+</html>

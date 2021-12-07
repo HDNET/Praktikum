@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Praktikum</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="../../public/style.css">
+    {% endblock %}
+
+    {% block javascripts %}
+        <script>
+
+        </script>
+    {% endblock %}
+    <style>
+        .card {
+            background-color: rgb(var(--color-primary-dark));
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+    <div class="card">
+        <div class="card-content">
+            <h3>{{ item.headline }} </h3>
+            <p> {{ item.content }}</p>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Praktikum</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="../../../public/style.css">
+    {% endblock %}
+
+    {% block javascripts %}
+        <script>
+
+        </script>
+    {% endblock %}
+    <style>
+        #plant-profile {
+
+            padding: 150px 32px;
+            color: white;
+        }
+
+        .infogroup {
+            display: block;
+            margin-bottom: 32px ;
+        }
+
+        @media screen and (max-width: 1360px){
+            .infogroup {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+<div id="plant-profile">
+    <div class="infogroup">
+        <p class="bold primary-light">Name</p>
+        <p class="light"> Maria Mustermann </p>
+    </div>
+
+    <div class="infogroup">
+        <p class="bold primary-light">Schule</p>
+        <p class="light"> Realschule</p>
+    </div>
+
+    <div class="infogroup">
+        <p class="bold primary-light">E-Mail</p>
+        <p class="light"> m.muster@gmail.com </p>
+    </div>
+    <div class="infogroup">
+        <p class="bold primary-light">Telefon</p>
+        <p class="light"> +49 12345 67890</p>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Praktikum</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="style.css">
+    {% endblock %}
+
+    {% block javascripts %}
+        <script>
+
+        </script>
+    {% endblock %}
+    <style>
+        .hobby {
+            background-color: rgb(var(--color-primary-darker));
+            height: 100vh;
+            padding: 80px;
+        }
+
+        .hobby-element{
+            max-width: 1024px;
+            display: flex;
+            grid-gap: 32px;
+        }
+        .hobby-cards{
+            display: grid;
+            grid-gap: 32px;
+            width: 100%;
+            grid-template-columns: repeat(2, auto);
+        }
+
+        .hobby-text {
+            background-color: red;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+    {% set hobbies = [
+        {'headline': 'Hobby1',
+        'content': 'Lorem Ipsum'},
+        {'headline': 'Hobby2',
+            'content': 'Lorem Ipsum'},
+        {'headline': 'Hobby3',
+            'content': 'Lorem Ipsum'},
+        {'headline': 'Hobby4',
+            'content': 'Lorem Ipsum'},
+    ] %}
+
+    <div class="hobby">
+        <div class="hobby-element"><span class="hobby-cards">
+            {% for item in hobbies %}
+                {% include 'components/card.html.twig' with item %}
+            {% endfor %}
+        </span>
+            <span class="hobby-text">Lorem Ipsum</span></div>
+    </div>
+{% endblock %}
+</body>
+</html>

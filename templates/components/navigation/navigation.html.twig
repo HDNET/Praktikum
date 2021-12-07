@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Praktikum</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="../../../public/style.css">
+    {% endblock %}
+
+    {% block javascripts %}
+        <script>
+            function onNav() {
+                var element = document.getElementById("toggle");
+                element.classList.toggle("toggle--on");
+
+                var navigation = document.getElementById("menu-holder");
+                navigation.classList.toggle("toggle--on");
+            }
+
+        </script>
+    {% endblock %}
+    <style>
+        .nav-points {
+            color: rgb(var(--color-primary-lighter));
+            padding: 5px 0;
+            font-size: 28px;
+            line-height: 40px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+
+        .header-holder {
+            position: fixed;
+            background: rgb(var(--color-primary-dark));
+            width: 380px;
+            height: 100vh;
+            z-index: 1;
+            top:0;
+        }
+
+        .toggle-holder {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 3;
+        }
+
+        #toggle {
+            height: 32px;
+            width: 30px;
+            position: relative;
+        }
+
+        #toggle:before {
+            transform: translate3d(0,-8px,0px);
+            width: 21px;
+            margin-left: 0;
+            content: '';
+            height: 3px;
+            position: absolute;
+            transform-origin: 50% 50%;
+            transition: all .25s;
+            top:8px;
+            background: rgb(var(--color-primary-lighter));
+        }
+        #toggle:after {
+            transform: translate3d(0,8px,0px);
+            width: 30px;
+            margin-left: 0;
+            content: '';
+            height: 3px;
+            position: absolute;
+            transform-origin: 50% 50%;
+            top:8px;
+            background: rgb(var(--color-primary-lighter));
+        }
+
+        #toggle .menu-line {
+            width: 13px;
+            height: 3px;
+            position: absolute;
+            transition: all .25s;
+            margin-left: 0;
+            top: 8px;
+            background-color: rgb(var(--color-primary-lighter));
+        }
+
+        #toggle.toggle--on .menu-line{
+            opacity: 0;
+        }
+
+        #toggle.toggle--on:before {
+            transform: rotate3d(0,0,1,
+            45deg) translate3d(0,0,0);
+            background-color: rgb(var(--color-primary-lighter));
+            margin-left: 0;
+            width: 26px;
+        }
+
+        #toggle.toggle--on:after {
+            transform: rotate3d(0,0,1,
+            -45deg);
+            background-color: rgb(var(--color-primary-lighter));
+            width: 26px;
+        }
+        #menu-holder {
+            background-color: rgb(var(--color-primary-light));
+            width: 380px;
+            height: 100%;
+            min-height: 100vh;
+            top: 0;
+            left: 0;
+            position: absolute;
+            transform: translateX(-400px);
+            transition: transform .3s linear;
+            z-index: 1;
+            overflow: auto;
+        }
+
+        #menu-holder.toggle--on {
+            transform: translateX(0);
+        }
+
+        .menu-holder--points {
+            position: relative;
+            padding: 120px 50px 0 75px;
+        }
+
+        .menu-item {
+            position: relative;
+            display: table;
+            list-style: none;
+            margin-top: 24px;
+            padding: 0;
+        }
+
+        @media screen and (max-width: 1599px){
+            .header-holder {
+                width: 320px;
+            }
+
+            #menu-holder {
+                width: 320px;
+                transform: translateX(-320px);
+            }
+        }
+        @media screen and (max-width: 1360px){
+            .header-holder {
+                width: 90px;
+            }
+        }
+        @media screen and (max-width: 1020px){
+            .header-holder {
+                height: 55px;
+                width: 100%;
+                z-index: 2;
+            }
+
+            .toggle-holder {
+                top: 15px;
+                left: 15px;
+            }
+        }
+
+        @media screen and (max-width: 650px) {
+            #menu-holder {
+                width: 100%;
+                transform: translateX(-100%);
+                padding-top: 70px;
+                overflow: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+    <header class="header-holder">
+        <div class="toggle-holder">
+            <div id="toggle" onclick="onNav()">
+                <div class="menu-line"></div>
+            </div>
+        </div>
+        <div id="menu-holder">
+            <nav class="menu-holder--points">
+                <ul>
+                    <li class="menu-item">
+                        <a class="nav-points" href="#"> Punkt A </a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="nav-points" href="#"> Punkt B </a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="nav-points" href="#"> Punkt C </a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="nav-points" href="#"> Punkt D </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        {{ include('components/profile/profile.html.twig') }}
+    </header>
+{% endblock %}
+</body>
+</html>
