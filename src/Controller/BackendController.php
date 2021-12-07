@@ -119,7 +119,7 @@ class BackendController extends AbstractController
             if ($file->getMimeType() != 'application/pdf') {
                 throw new \Exception('Die hochgeladene Datei muss eine PDF Datei sein!');
             }
-            
+
             // Move the file where it can be downloaded
             $file->move(IndexController::CV_ASSET_DIR, IndexController::CV_ASSET_FILENAME);
         } catch (\Exception $e) {
