@@ -108,6 +108,8 @@
             transition: transform .3s linear;
             z-index: 1;
             overflow: auto;
+            display: flex;
+            align-items: center;
         }
 
         #menu-holder.toggle--on {
@@ -115,16 +117,16 @@
         }
 
         .menu-holder--points {
-            position: relative;
-            padding: 120px 50px 0 75px;
+            width: fit-content;
+            height: fit-content;
+            padding-left: 75px;
         }
 
         .menu-item {
-            position: relative;
-            display: table;
             list-style: none;
+        }
+        .menu-item:not(:first-child) {
             margin-top: 24px;
-            padding: 0;
         }
 
         @media screen and (max-width: 1599px){
@@ -159,7 +161,6 @@
             #menu-holder {
                 width: 100%;
                 transform: translateX(-100%);
-                padding-top: 70px;
                 overflow: auto;
             }
         }
@@ -176,22 +177,22 @@
             <nav class="menu-holder--points">
                 <ul>
                     <li class="menu-item">
-                        <a class="nav-points" href="#home">Home</a>
+                        <a onclick="onNav()" class="nav-points" href="#home">Home</a>
                     </li>
                     <li class="menu-item">
-                        <a class="nav-points" href="#hobby">Interessen</a>
+                        <a onclick="onNav()" class="nav-points" href="#hobby">Interessen</a>
                     </li>
                     <li class="menu-item">
-                        <a class="nav-points" href="#experience">Erfahrungen</a>
+                        <a onclick="onNav()" class="nav-points" href="#experience">Erfahrungen</a>
                     </li>
                     <li class="menu-item">
-                        <a class="nav-points" href="#">Werdegang</a>
+                        <a onclick="onNav()" class="nav-points" href="#career">Werdegang</a>
                     </li>
                     <li class="menu-item">
-                        <a class="nav-points" href="#expertise">Kenntnisse</a>
+                        <a onclick="onNav()" class="nav-points" href="#expertise">Kenntnisse</a>
                     </li>
                     <li class="menu-item">
-                        <a class="nav-points" href="#contact">Kontakt</a>
+                        <a onclick="onNav()" class="nav-points" href="#contact">Kontakt</a>
                     </li>
                 </ul>
             </nav>
