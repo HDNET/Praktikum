@@ -25,6 +25,7 @@ return array(
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Symfony\\Component\\VarExporter\\' => array($vendorDir . '/symfony/var-exporter'),
     'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
+    'Symfony\\Component\\Validator\\' => array($vendorDir . '/symfony/validator'),
     'Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
     'Symfony\\Component\\Security\\Http\\' => array($vendorDir . '/symfony/security-http'),
     'Symfony\\Component\\Security\\Guard\\' => array($vendorDir . '/symfony/security-guard'),
