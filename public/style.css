@@ -68,7 +68,7 @@ h3 {
 p {
     font-family: var(--font-family-base);
     font-weight: var(--font-normal);
-    color: rgb(var(--color-primary-lighter));
+    color: rgb(var(--color-primary-normal));
     font-size: 18px;
     line-height: 167%;
 }

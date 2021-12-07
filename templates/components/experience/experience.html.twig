@@ -37,11 +37,11 @@
                 'linkText': 'zum Cambridge Assessments C1 Exam',
                 'img': 'img/english.png'}
         ] %}
-    <div class="experience">
+    <section id="experience" class="experience">
         <h2> Erfahrungen</h2>
         <div class="experience-element">
             {% for item in experiences %}
                 {% include 'components/experience/experience-content.html.twig' %}
             {% endfor %}</div>
-    </div>
+    </section>
 {% endblock %}

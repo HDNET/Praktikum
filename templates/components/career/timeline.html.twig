@@ -1,0 +1,89 @@
+{% block javascripts %}
+    <script>
+
+    </script>
+{% endblock %}
+{% block style %}
+    <style>
+        li.timeline-event {
+            margin: 0 0 48px 64px;
+            position: relative;
+            padding-top: 8px;
+            list-style: none;
+            transition: .3s;
+        }
+
+        .timline-event-date {
+            position: absolute;
+            left: -115px;
+            top: 2px;
+            transition: .3s;
+            color: rgb(var(--color-primary-light));
+            font-weight: 700;
+        }
+
+        .timeline-event-content {
+            margin-left: 48px;
+        }
+
+        span.timeline-circle {
+            position: absolute;
+            top: 0;
+            left: -32px;
+        }
+
+        span.timeline-circle:before {
+            content: "";
+            display: block;
+            width: 32px;
+            height: 32px;
+            border-radius: 90%;
+            border: 4px solid rgb(var(--color-primary-light));
+            position: absolute;
+            left: -16px;
+            top: 4px;
+            z-index: 1;
+            transition: .3s;
+        }
+
+        li.timeline-event:not(:last-child):before {
+            content: "";
+            width: 4px;
+            height: calc(100% - 20px);
+            position: absolute;
+            background-color: rgb(var(--color-primary-light));
+            left: -30px;
+            top: 58px; }
+
+        li.timeline-event span.timeline-circle:after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            left: -8px;
+            top: 12px;
+            border-radius: 90%;
+            background-color: rgb(var(--color-primary-light));
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        li.timeline-event:hover span.timeline-circle:after {
+            opacity: 1;
+            transition: opacity .3s;
+        }
+
+        li.timeline-event:hover p {
+            color: rgb(var(--color-primary-lighter));
+            transition: color .3s ease-in-out;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+        <li class="timeline-event">
+            <span class="timeline-circle"></span>
+            <div> <p class="timeline-event-content"><b> {{ (item.contentDate) }}</b>  {{ (item.content)}} </p></div>
+            <div class="timline-event-date"> <p class="color-primary-light"> {{ (item.date) }} </p></div>
+        </li>
+
+{% endblock %}
