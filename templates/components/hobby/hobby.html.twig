@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Praktikum</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" {{ asset('style.css') }}>
-    {% endblock %}
-
-    {% block javascripts %}
-        <script>
-
-        </script>
-    {% endblock %}
+{% block style %}
     <style>
         .hobby {
             background-color: rgb(var(--color-primary-darker));
@@ -37,8 +24,8 @@
             padding: 0 32px;
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
 {% block body %}
     {% set hobbies = [
         {'headline': 'Umwelt',
@@ -68,5 +55,3 @@
                 <p class="light color-primary-normal">Mein Name ist Maria Mustermann. Ich bin 17 Jahre alt und besuche derzeit das Gymnasium XYZ in Musterstadt. Meine Interessen liegen im Kreativen und Nachhaltigen Bereich. Ich fotografiere gerne und achte sehr auf meinen CO2 Fußabdruck. In der Schule belege ich die Leistungskurse Englisch, Informatik und Chemie. Hierbei bringt mir in Informatik das Programmieren viel Freude, daher beschäftige ich mich hiermit auch in meiner Freizeit.</p></span></div>
     </div>
 {% endblock %}
-</body>
-</html>

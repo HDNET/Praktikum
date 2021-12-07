@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Praktikum</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="../../../public/style.css">
-    {% endblock %}
-
-    {% block javascripts %}
-        <script>
-
-        </script>
-    {% endblock %}
+{% block style %}
     <style>
         .home {
             position: relative;
@@ -62,8 +49,8 @@
             }
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
 {% block body %}
     <section id="home" class="home">
         <div class="home-element">
@@ -79,5 +66,3 @@
         </div>
     </section>
 {% endblock %}
-</body>
-</html>
