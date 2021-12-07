@@ -33,8 +33,8 @@
         }
 
         .hobby-text {
-            background-color: red;
             width: 100%;
+            padding: 0 32px;
         }
     </style>
 </head>
@@ -63,7 +63,9 @@
                     {% include 'components/card.html.twig' with item %}
                 {% endfor %}
             </span>
-            <span class="hobby-text">Lorem Ipsum</span></div>
+            <span class="hobby-text">
+                <h2> Vorstellung meiner Person</h2>
+                <p class="light color-primary-normal">Mein Name ist Maria Mustermann. Ich bin 17 Jahre alt und besuche derzeit das Gymnasium XYZ in Musterstadt. Meine Interessen liegen im Kreativen und Nachhaltigen Bereich. Ich fotografiere gerne und achte sehr auf meinen CO2 Fußabdruck. In der Schule belege ich die Leistungskurse Englisch, Informatik und Chemie. Hierbei bringt mir in Informatik das Programmieren viel Freude, daher beschäftige ich mich hiermit auch in meiner Freizeit.</p></span></div>
     </div>
 {% endblock %}
 </body>
