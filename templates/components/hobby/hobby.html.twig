@@ -2,7 +2,6 @@
     <style>
         .hobby {
             background-color: rgb(var(--color-primary-darker));
-            height: 100vh;
             padding: 80px;
         }
 
@@ -20,8 +19,29 @@
         }
 
         .hobby-text {
-            width: 100%;
+            width: auto;
             padding: 0 32px;
+        }
+
+        @media screen and (max-width: 1020px) {
+            .hobby-element {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        @media screen and (max-width: 650px){
+            .hobby {
+                min-height: max-content !important;
+                padding: 16px;
+            }
+            .hobby-cards {
+                grid-template-columns: repeat(1, 100%);
+            }
+
+            .hobby-text {
+                padding: 0 16px;
+            }
         }
     </style>
 {% endblock %}
@@ -52,6 +72,9 @@
             </span>
             <span class="hobby-text">
                 <h2> Vorstellung meiner Person</h2>
-                <p class="light color-primary-normal">Mein Name ist Maria Mustermann. Ich bin 17 Jahre alt und besuche derzeit das Gymnasium XYZ in Musterstadt. Meine Interessen liegen im Kreativen und Nachhaltigen Bereich. Ich fotografiere gerne und achte sehr auf meinen CO2 Fußabdruck. In der Schule belege ich die Leistungskurse Englisch, Informatik und Chemie. Hierbei bringt mir in Informatik das Programmieren viel Freude, daher beschäftige ich mich hiermit auch in meiner Freizeit.</p></span></div>
+                <p class="light color-primary-normal">Mein Name ist Maria Mustermann. Ich bin 17 Jahre alt und besuche derzeit das Gymnasium XYZ in Musterstadt. Meine Interessen liegen im Kreativen und Nachhaltigen Bereich. Ich fotografiere gerne und achte sehr auf meinen CO2 Fußabdruck. In der Schule belege ich die Leistungskurse Englisch, Informatik und Chemie. Hierbei bringt mir in Informatik das Programmieren viel Freude, daher beschäftige ich mich hiermit auch in meiner Freizeit.
+                </p>
+            </span>
+        </div>
     </div>
 {% endblock %}

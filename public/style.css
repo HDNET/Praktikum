@@ -95,6 +95,10 @@ a {
     color: rgb(var(--color-primary-dark));
 }
 
+.backend p {
+    color: black;
+}
+
 .backend .c-linkCopied {
     display: none;
 }
