@@ -7,17 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controller\\BackendController' => $baseDir . '/src/Controller/BackendController.php',
-    'App\\Controller\\ConfigurationController' => $baseDir . '/src/Controller/ConfigurationController.php',
     'App\\Controller\\IndexController' => $baseDir . '/src/Controller/IndexController.php',
     'App\\Controller\\LoginController' => $baseDir . '/src/Controller/LoginController.php',
-    'App\\Entity\\Color' => $baseDir . '/src/Entity/Color.php',
     'App\\Entity\\Contact' => $baseDir . '/src/Entity/Contact.php',
-    'App\\Entity\\Size' => $baseDir . '/src/Entity/Size.php',
     'App\\FormType\\ContactType' => $baseDir . '/src/FormType/ContactType.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
-    'App\\Repository\\ColorRepository' => $baseDir . '/src/Repository/ColorRepository.php',
-    'App\\Repository\\SizeRepository' => $baseDir . '/src/Repository/SizeRepository.php',
     'App\\Service\\EmailService' => $baseDir . '/src/Service/EmailService.php',
+    'App\\Service\\HashService' => $baseDir . '/src/Service/HashService.php',
     'App\\Service\\QueryService' => $baseDir . '/src/Service/QueryService.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Collator' => $vendorDir . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',

@@ -9,15 +9,15 @@ class ComposerStaticInit61de0ab1f15a62c2ad87a36cc32daaf9
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
+        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -336,17 +336,13 @@ class ComposerStaticInit61de0ab1f15a62c2ad87a36cc32daaf9
 
     public static $classMap = array (
         'App\\Controller\\BackendController' => __DIR__ . '/../..' . '/src/Controller/BackendController.php',
-        'App\\Controller\\ConfigurationController' => __DIR__ . '/../..' . '/src/Controller/ConfigurationController.php',
         'App\\Controller\\IndexController' => __DIR__ . '/../..' . '/src/Controller/IndexController.php',
         'App\\Controller\\LoginController' => __DIR__ . '/../..' . '/src/Controller/LoginController.php',
-        'App\\Entity\\Color' => __DIR__ . '/../..' . '/src/Entity/Color.php',
         'App\\Entity\\Contact' => __DIR__ . '/../..' . '/src/Entity/Contact.php',
-        'App\\Entity\\Size' => __DIR__ . '/../..' . '/src/Entity/Size.php',
         'App\\FormType\\ContactType' => __DIR__ . '/../..' . '/src/FormType/ContactType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
-        'App\\Repository\\ColorRepository' => __DIR__ . '/../..' . '/src/Repository/ColorRepository.php',
-        'App\\Repository\\SizeRepository' => __DIR__ . '/../..' . '/src/Repository/SizeRepository.php',
         'App\\Service\\EmailService' => __DIR__ . '/../..' . '/src/Service/EmailService.php',
+        'App\\Service\\HashService' => __DIR__ . '/../..' . '/src/Service/HashService.php',
         'App\\Service\\QueryService' => __DIR__ . '/../..' . '/src/Service/QueryService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
