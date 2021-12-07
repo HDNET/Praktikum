@@ -8,6 +8,10 @@ use App\Controller\BackendController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class HashService
+ * @package App\Service
+ */
 class HashService
 {
     /**
