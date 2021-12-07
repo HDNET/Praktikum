@@ -30,20 +30,34 @@
     font-weight: var(--font-light);
 }
 
-.primary-light {
-    color: rgb(var(--color-primary-light))
+.color-primary-light {
+    color: rgb(var(--color-primary-light));
+}
+
+.color-primary-lighter {
+    color: rgb(var(--color-primary-lighter));
 }
 
 .text-center {
     text-align: center;
 }
 
-h1 {
+h1, h2, h3 {
     font-family: var(--font-family-base);
     font-weight: var(--font-bold);
     color: rgb(var(--color-primary-light));
+}
+
+h1 {
     font-size: 80px;
 }
+
+h2 {}
+
+h3 {
+    font-size: 28px;
+}
+
 
 p {
     font-family: var(--font-family-base);
