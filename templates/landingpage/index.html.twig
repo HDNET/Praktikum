@@ -1,25 +1,38 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Praktikum</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="style.css">
+    {% endblock %}
 
-{% block title%}
-    Praktikum
-{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
+    {% block javascripts %}
+        <script>
 
-{% block javascripts %}
-    {{ parent() }}
-    <script>
+        </script>
+    {% endblock %}
+    <style>
+        #content {
+            margin-left: 380px;
+            width: calc(100% - 380px);
+        }
+        @media screen and (max-width: 1599px) {
+            #content {
+                margin-left: 320px;
+                width: calc(100% - 320px);
+            }
+        }
 
-    </script>
-{% endblock %}
-
+    </style>
+</head>
+<body>
 {% block body %}
-    {#
-        {{ include('components/ImageBanner.html.twig') }}
-    #}
-
-    {{ include('components/cv_download_button.html.twig') }}
-
-    {{ include('components/contact_form.html.twig') }}
+    {{ include('components/navigation/navigation.html.twig') }}
+    <div id="content">
+        {{ include('components/home/home.html.twig') }}
+        {{ include('components/hobby/hobby.html.twig') }}
+    </div>
 {% endblock %}
+</body>
+</html>
