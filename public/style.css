@@ -12,8 +12,7 @@
 
     --font-family-base: 'Poppins', sans-serif;
     --font-bold: 700;
-    --font-normal: 500;
-    --font-light: 300;
+    --font-light: 400;
 
     --font-size-base: 18px;
 
@@ -75,7 +74,7 @@ h3 {
 
 p {
     font-family: var(--font-family-base);
-    font-weight: var(--font-normal);
+    font-weight: var(--font-light);
     color: rgb(var(--color-primary-normal));
     font-size: 18px;
     line-height: 167%;
@@ -84,7 +83,7 @@ p {
 a {
     text-decoration: none;
     font-family: var(--font-family-base);
-    font-weight: var(--font-normal);
+    font-weight: var(--font-light);
 }
 
 .btn {
@@ -92,6 +91,7 @@ a {
     border-radius: var(--border-radius-button);
     font-family: var(--font-family-base);
     border: none;
+    cursor: pointer;
 }
 
 .btn-primary {
