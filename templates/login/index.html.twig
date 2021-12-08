@@ -13,7 +13,7 @@
     <style>
         .login {
             background-color: rgb(var(--color-primary-darker));
-            padding: 80px 25%;
+            padding: 80px 30%;
             height: calc(100vh - 160px);
             display: flex;
             justify-content: center;
@@ -24,6 +24,24 @@
 
         .login-text, .login-form {
             width: 100%;
+        }
+
+        @media screen and (max-width: 1600px) {
+            .login {
+                padding: 80px 25%;
+            }
+        }
+
+        @media screen and (max-width: 1020px) {
+            .login {
+                padding: 80px 20%;
+            }
+        }
+
+        @media screen and (max-width: 650px){
+            .login {
+                padding: 80px 10%;
+            }
         }
     </style>
 
