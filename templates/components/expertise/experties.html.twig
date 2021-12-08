@@ -60,9 +60,12 @@
     <script>
         window.addEventListener('load', () => {
             let observer = new IntersectionObserver(entries => {
-                if(entries[0].isIntersecting === true)
-                    var percentage = entries[0].target.dataset.percentage
-                entries[0].target.style.width = percentage + '%'
+                for (const entry of entries) {
+                    if (true === entry.isIntersecting) {
+                        const percentage = entry.target.dataset.percentage;
+                        entry.target.style.width = percentage + '%';
+                    }
+                }
             },{ threshold: [0.3] })
             const elements = [...document.getElementsByClassName('js-ProgressBarTop')]
             elements.forEach(item => {
