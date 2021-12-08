@@ -10,8 +10,13 @@
                     }
                     label.classList.toggle('form-group-label-focus');
                 };
+
                 input.addEventListener('focusin', eventHandler);
                 input.addEventListener('focusout', eventHandler);
+
+                if ('' !== input.value) {
+                    input.dispatchEvent(new Event('focusout'))
+                }
             }
         })
     </script>
