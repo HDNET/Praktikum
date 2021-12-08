@@ -23,6 +23,7 @@
             margin-top: -8px;
             background-color: rgb(var(--color-primary-light));
             transition: width 2s;
+            width: 0%;
         }
     </style>
 {% endblock %}
@@ -31,7 +32,7 @@
     <div class="c-ExpertiseItem">
         <div class="c-ExpertiseItem__progressBarContainer">
             <div class="c-ProgressBar__bottom">
-                <div class="c-ProgressBar__top" style="width: {{ expertise.percentage }}%;"></div>
+                <div class="c-ProgressBar__top js-ProgressBarTop" data-percentage="{{ expertise.percentage }}"></div>
             </div>
             <div class="c-ProgressBar__percentage">
                 <h3 class="bold">{{ expertise.percentage }}%</h3>

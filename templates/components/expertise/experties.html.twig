@@ -55,3 +55,19 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = function () {
+            let observer = new IntersectionObserver(entries => {
+                if(entries[0].isIntersecting === true)
+                    var percentage = entries[0].target.dataset.percentage
+                    entries[0].target.style.width = percentage + '%'
+            },{ threshold: [0.3] })
+            const elements = [...document.getElementsByClassName('js-ProgressBarTop')]
+            elements.forEach(item => {
+                observer.observe(item)
+            })
+        }
+    </script>
+{% endblock %}
