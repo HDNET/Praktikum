@@ -1,6 +1,6 @@
 {% block javascripts %}
     <script>
-        window.onload = function () {
+        window.addEventListener('load', () => {
             const inputs = document.getElementById('form').getElementsByClassName('form-control');
             for (let input of inputs) {
                 const eventHandler = (event) => {
@@ -10,7 +10,7 @@
                 input.addEventListener('focusin', eventHandler);
                 input.addEventListener('focusout', eventHandler);
             }
-        }
+        })
     </script>
 {% endblock %}
 
