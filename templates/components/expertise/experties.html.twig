@@ -1,0 +1,76 @@
+{% block style %}
+    <style>
+        .expertise {
+            background-color: rgb(var(--color-primary-darker));
+            padding: 80px;
+        }
+        .expertise-element{
+            max-width: 1024px;
+            display: grid;
+            grid-gap: 32px;
+        }
+        @media screen and (max-width: 650px){
+            .expertise {
+                padding: 24px 80px 24px 24px;
+            }
+        }
+    </style>
+    {{ block('style', 'components/expertise/experties-item.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    {% set expertises = [
+        {
+            'headline': 'Englisch',
+            'percentage': 65
+        },
+        {
+            'headline': 'JavaScript',
+            'percentage': 25
+        },
+        {
+            'headline': 'Fotografie',
+            'percentage': 85
+        },
+        {
+            'headline': 'Fitness',
+            'percentage': 45
+        },
+        {
+            'headline': 'Kreativität',
+            'percentage': 90
+        }]
+    %}
+
+    <div id="expertise" class="expertise">
+        <div class="expertise-element">
+            <h2 class="text-uppercase">Kenntnisse</h2>
+
+            {% for expertise in expertises %}
+                {% with expertise %}
+                    {{ block('body', 'components/expertise/experties-item.html.twig') }}
+                {% endwith %}
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.addEventListener('load', () => {
+            let observer = new IntersectionObserver(entries => {
+                for (const entry of entries) {
+                    if (true === entry.isIntersecting) {
+                        const percentage = entry.target.dataset.percentage;
+                        entry.target.style.width = percentage + '%';
+                    }
+                }
+            },{ threshold: [0.3] })
+            const elements = [...document.getElementsByClassName('js-ProgressBarTop')]
+            elements.forEach(item => {
+                observer.observe(item)
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% block style %}
+    <style>
+        .c-ExpertiseItem {
+            margin-bottom: 32px;
+        }
+        .c-ExpertiseItem .c-ExpertiseItem__progressBarContainer {
+            display: grid;
+            grid-template-columns: 90% auto;
+            grid-gap: 32px;
+            margin-bottom: 32px;
+        }
+        .c-ExpertiseItem .c-ExpertiseItem__progressBarContainer .c-ProgressBar__percentage > h3{
+            margin-bottom: 0px;
+            margin-top: -8px;
+        }
+        .c-ExpertiseItem .c-ExpertiseItem__progressBarContainer .c-ProgressBar__bottom {
+            width: 100%;
+            height: 16px;
+            background-color: rgb(var(--color-primary-dark));
+        }
+        .c-ExpertiseItem .c-ExpertiseItem__progressBarContainer .c-ProgressBar__top {
+            height: 32px;
+            margin-top: -8px;
+            background-color: rgb(var(--color-primary-light));
+            transition: width 2s;
+            width: 0%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="c-ExpertiseItem">
+        <div class="c-ExpertiseItem__progressBarContainer">
+            <div class="c-ProgressBar__bottom">
+                <div class="c-ProgressBar__top js-ProgressBarTop" data-percentage="{{ expertise.percentage }}"></div>
+            </div>
+            <div class="c-ProgressBar__percentage">
+                <h3 class="bold">{{ expertise.percentage }}%</h3>
+            </div>
+        </div>
+        <h3 class="color-primary-normal">{{ expertise.headline }}</h3>
+    </div>
+{% endblock %}

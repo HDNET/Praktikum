@@ -1,21 +1,82 @@
 {# templates/login/index.html.twig #}
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ block('javascripts', 'components/form/form.html.twig') }}
+{% endblock %}
+
+{% block style %}
+    <style>
+        .login {
+            background-color: rgb(var(--color-primary-darker));
+            padding: 80px 30%;
+            height: calc(100vh - 160px);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .login-text, .login-form {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 1600px) {
+            .login {
+                padding: 80px 25%;
+            }
+        }
+
+        @media screen and (max-width: 1020px) {
+            .login {
+                padding: 80px 20%;
+            }
+        }
+
+        @media screen and (max-width: 650px){
+            .login {
+                padding: 80px 10%;
+            }
+        }
+    </style>
+
+    {{ block('style', 'components/form/form.html.twig') }}
+{% endblock %}
+
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <section class="login">
+        <div class="login-text">
+            <h1>LOGIN</h1>
+        </div>
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+        <div id="form" class="login-form">
+            {% if error %}
+                <div class="form-group">
+                    <span class="invalid-feedback d-block">
+                        <span class="form-error-icon badge badge-danger text-uppercase">Fehler</span>
+                        <span class="form-error-message">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+                    </span>
+                </div>
+            {% endif %}
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
-
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"/> #}
-
-        <button type="submit">login</button>
-    </form>
+            <form action="{{ path('login') }}" method="post">
+                <div class="form-group">
+                    <label for="username">Anmeldename</label>
+                    <input type="text" id="username" class="form-control {% if error %}is-invalid{% endif %}" name="_username" value="{{ last_username }}" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input type="password" id="password" class="form-control {% if error %}is-invalid{% endif %}" name="_password" required="required" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-primary btn">EINLOGGEN</button>
+                </div>
+            </form>
+        </div>
+    </section>
 {% endblock %}

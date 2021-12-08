@@ -8,5 +8,4 @@
 /var/
 .idea
 ###< symfony/framework-bundle ###
-/sharedLinks/
-/assets/
+/uploads

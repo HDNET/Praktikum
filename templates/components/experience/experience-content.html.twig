@@ -1,0 +1,57 @@
+{% block javascripts %}
+    <script>
+
+    </script>
+{% endblock %}
+{% block style %}
+    <style>
+        .experience-content {
+            display: flex;
+            grid-gap: 32px;
+        }
+
+        .experience-content-img {
+            aspect-ratio: 4/3;
+        }
+
+        .experience-content-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .experiene-content-link{
+            display: flex;
+            height: 100%;
+            align-items: flex-end;
+        }
+        .experiene-content-link img {
+            margin-right: 10px;
+        }
+
+        @media screen and (max-width: 650px) {
+            .experience-content {
+                flex-direction: column;
+            }
+
+            .experience-content-img {
+                aspect-ratio: 2/1;
+            }
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="experience-content">
+        <img class="experience-content-img" src="{{ asset(item.img) }}">
+
+        <span class="experience-content-text">
+            <h3> {{ item.headline }}</h3>
+            <p class="color-primary-normal"> {{ item.content }}</p>
+            {% if item.link is defined %}
+                <div class="experiene-content-link">
+                    <img src="{{ asset('svg/union.svg') }}" width="16px">
+                    <a href="{{ item.link }}" class="color-primary-light"> {{ item.linkText }}</a>
+                </div>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

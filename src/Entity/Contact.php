@@ -4,16 +4,31 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class Contact
 {
+    /**
+     * Make sure the name field is not empty
+     * @Assert\NotBlank
+     */
     protected string $name = '';
+    /**
+     * Make sure the email field is a valid email address and is not empty
+     * @Assert\NotBlank
+     * @Assert\Email
+     */
     protected string $email = '';
+    /**
+     * Make sure the subject field is not empty
+     * @Assert\NotBlank
+     */
     protected string $subject = '';
+    /**
+     * Make sure the message field is not empty
+     * @Assert\NotBlank
+     */
     protected string $message = '';
-
-    public function __construct()
-    {
-    }
 
     public function getName(): string
     {

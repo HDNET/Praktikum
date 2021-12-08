@@ -1,25 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title%}
-    Praktikum
-{% endblock %}
 {% block stylesheets %}
-    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script>
+    {{ block('javascripts', 'components/navigation/navigation.html.twig') }}
+    {{ block('javascripts', 'components/contact/contact_form.html.twig') }}
+    {{ block('javascripts', 'components/expertise/experties.html.twig') }}
+{% endblock %}
 
-    </script>
+{% block style %}
+    <style>
+        #content {
+            margin-left: 380px;
+            width: calc(100% - 380px);
+        }
+
+        @media screen and (max-width: 1599px){
+            #content {
+            margin-left: 320px;
+            width: calc(100% - 320px);
+            }
+        }
+
+        @media screen and (max-width: 1360px){
+            #content {
+                margin-left: 90px;
+                width: calc(100% - 90px);
+            }
+        }
+
+        @media screen and (max-width: 1020px) {
+            #content {
+                margin-left: 0px;
+                width: 100%;
+            }
+        }
+
+    </style>
+
+    {{ block('style', 'components/navigation/navigation.html.twig') }}
+    {{ block('style', 'components/home/home.html.twig') }}
+    {{ block('style', 'components/hobby/hobby.html.twig') }}
+    {{ block('style', 'components/experience/experience.html.twig') }}
+    {{ block('style', 'components/career/career.html.twig') }}
+    {{ block('style', 'components/expertise/experties.html.twig') }}
+    {{ block('style', 'components/contact/contact_form.html.twig') }}
 {% endblock %}
 
 {% block body %}
-    {#
-        {{ include('components/ImageBanner.html.twig') }}
-    #}
-
-    {{ include('components/cv_download_button.html.twig') }}
-
-    {{ include('components/contact_form.html.twig') }}
+    {{ block('body', 'components/navigation/navigation.html.twig') }}
+    <div id="content">
+        {{ block('body', 'components/home/home.html.twig') }}
+        {{ block('body', 'components/hobby/hobby.html.twig') }}
+        {{ block('body', 'components/experience/experience.html.twig') }}
+        {{ block('body', 'components/career/career.html.twig') }}
+        {{ block('body', 'components/expertise/experties.html.twig') }}
+        {{ block('body', 'components/contact/contact_form.html.twig') }}
+    </div>
 {% endblock %}

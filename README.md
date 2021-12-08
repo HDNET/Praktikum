@@ -19,7 +19,8 @@
 5. Pick PHP version 7.4.21
 6. Click start and visit http://localhost:8888/
 7. Launch mailhog and visit http://0.0.0.0:8025/
-8. Enjoy!
+8. TODO's aus der `WhatToDoBefore.md` durchführen
+9. Enjoy!
 
 ## Software Used
 - PHP 7.4

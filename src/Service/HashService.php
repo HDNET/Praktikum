@@ -8,9 +8,24 @@ use App\Controller\BackendController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class HashService
+ * @package App\Service
+ */
 class HashService
 {
+    /**
+     * Filesystem service to interact with the local filesystem
+     *
+     * @var Filesystem $filesystem
+     */
     protected Filesystem $filesystem;
+
+    /**
+     * QueryService to extract query params from the request
+     *
+     * @var QueryService $queryService
+     */
     protected QueryService $queryService;
 
     public function __construct(Filesystem $filesystem, QueryService $queryService)
@@ -34,8 +49,10 @@ class HashService
 
     public function validateHash(Request $request): bool
     {
+        // get hash from request
         $hash = $this->getHash($request);
 
+        // if hash is not set, hash is also invalid
         if (null === $hash) {
             return false;
         }
@@ -62,6 +79,7 @@ class HashService
             }
         }
 
+        // return default value false
         return false;
     }
 

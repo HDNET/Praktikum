@@ -18,16 +18,42 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
-    public const CV_ASSETDIR = '../assets';
-    public const CV_ASSETFILENAME = 'Steckbrief.pdf';
-    protected const EMAIL_ADDRESS = 'florian.patruck@hdnet.de';
+    /**
+     * Path where to store the uploaded cv
+     */
+    public const CV_ASSET_DIR = '../uploads/assets';
+    /**
+     * Filename of the uploaded cv
+     */
+    public const CV_ASSET_FILENAME = 'Steckbrief.pdf';
+    /**
+     * The email address where the emails will send to from the contact form
+     */
+    protected $reciverEmailAddress;
+
+    /**
+     * EmailService used to send emails
+     *
+     * @var EmailService $emailService
+     */
     protected EmailService $emailService;
+
+    /**
+     * HashService to generate and validate hashes
+     * @var HashService $hashService
+     */
     protected HashService $hashService;
 
-    public function __construct(EmailService $emailService, HashService $hashService)
+    /**
+     * IndexController constructor.
+     * @param EmailService $emailService
+     * @param HashService $hashService
+     */
+    public function __construct(EmailService $emailService, HashService $hashService, $reciverEmailAddress)
     {
         $this->emailService = $emailService;
         $this->hashService = $hashService;
+        $this->reciverEmailAddress = $reciverEmailAddress;
     }
 
     /**
@@ -50,8 +76,8 @@ class IndexController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 // send email with contact infos
-                $this->emailService->sendMail(self::EMAIL_ADDRESS,
-                    self::EMAIL_ADDRESS,
+                $this->emailService->sendMail($this->reciverEmailAddress,
+                    $this->reciverEmailAddress,
                     $contact->getSubject(),
                     'emails/contact.html.twig',
                     [
@@ -95,7 +121,7 @@ class IndexController extends AbstractController
             return new Response('Not authorized', Response::HTTP_FORBIDDEN);
         }
 
-        $filename = self::CV_ASSETDIR.\DIRECTORY_SEPARATOR.self::CV_ASSETFILENAME;
+        $filename = self::CV_ASSET_DIR.\DIRECTORY_SEPARATOR.self::CV_ASSET_FILENAME;
         if (!$filesystem->exists($filename)) {
             return new Response('File not set yet!', Response::HTTP_NOT_FOUND);
         }

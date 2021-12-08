@@ -9,6 +9,7 @@ use App\Service\QueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +27,7 @@ class BackendController extends AbstractController
     /**
      * The base path, where the hash files are located
      */
-    public const HASH_FILES_BASE_URL = '../sharedLinks';
+    public const HASH_FILES_BASE_URL = '../uploads/sharedLinks';
 
     /** @var string $baseUrl The base url/ base domain */
     protected $baseUrl;
@@ -91,37 +92,64 @@ class BackendController extends AbstractController
     public function uploadCV(Request $request, Filesystem $filesystem): Response
     {
         try {
+            // Make sure a file was uploaded by looking into the request
             if (!$request->files->has('cvFile')) {
                 throw new \Exception('Es muss eine Datei hochgeladen werden!');
             }
 
-            $oldCvFilename = IndexController::CV_ASSETDIR . \DIRECTORY_SEPARATOR . IndexController::CV_ASSETFILENAME;
+            // Set the destination path where the file should be moved to, so that one is later able to download the file
+            $oldCvFilename = IndexController::CV_ASSET_DIR . \DIRECTORY_SEPARATOR . IndexController::CV_ASSET_FILENAME;
             if ($filesystem->exists($oldCvFilename)) {
                 $filesystem->remove($oldCvFilename);
             }
 
+            // Get the file from the request
             $file = $request->files->get('cvFile');
 
+            // Make sure the uplaod was successful
             if (!$file instanceof UploadedFile || !$file->isValid()) {
                 throw new \Exception('Die Datei konnte nicht hochgeladen werden!');
             }
 
+            // Validate that the size is not bigger then 5 MB
             if ($file->getSize() > 500000) {
                 throw new \Exception('Die hochgeladene Datei überschreitet die maximale Uploadgröße von 5 MB!');
             }
 
+            // Validate that the file has the correct extension (.pdf)
             if ($file->getMimeType() != 'application/pdf') {
                 throw new \Exception('Die hochgeladene Datei muss eine PDF Datei sein!');
             }
 
-            // $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-            $file->move(IndexController::CV_ASSETDIR, IndexController::CV_ASSETFILENAME);
+            // Move the file where it can be downloaded
+            $file->move(IndexController::CV_ASSET_DIR, IndexController::CV_ASSET_FILENAME);
         } catch (\Exception $e) {
+            // If an error occurs, show it to the user and send the result
             $this->addFlash('upload-danger', $e->getMessage());
             return $this->redirectToRoute('Admin');
         }
 
+        // Tell the user that the cv was uploaded successfully
         $this->addFlash('upload-success', 'Der Steckbrief wurde erfolgreich hochgeladen!');
         return $this->redirectToRoute('Admin');
     }
+
+    /**
+     * @Route("/removeCV", name="removeCV")
+     * @param Filesystem $filesystem
+     * @return Response
+     */
+    public function removeUploadedCV(Filesystem $filesystem): Response
+    {
+        //  build the filename
+        $filename = IndexController::CV_ASSET_DIR . DIRECTORY_SEPARATOR . IndexController::CV_ASSET_FILENAME;
+        // check if file with filename exists
+        if($filesystem->exists($filename)) {
+            // remove file
+            $filesystem->remove($filename);
+        }
+        // redirect to backend
+        return $this->redirectToRoute('Admin');
+    }
+
 }
