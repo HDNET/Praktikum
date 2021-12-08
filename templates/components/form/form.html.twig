@@ -5,6 +5,9 @@
             for (let input of inputs) {
                 const eventHandler = (event) => {
                     const label = event.target.parentNode.querySelector('label');
+                    if ('' !== event.target.value && label.classList.contains('form-group-label-focus')) {
+                        return;
+                    }
                     label.classList.toggle('form-group-label-focus');
                 };
                 input.addEventListener('focusin', eventHandler);
