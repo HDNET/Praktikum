@@ -29,3 +29,6 @@
 - MAMP
 - Mailhog
 - Git
+
+## Vorbereitung für den Frontend Tag
+- Farben & Schriftarten in der style.css anpassen

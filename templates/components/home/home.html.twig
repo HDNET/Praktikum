@@ -7,7 +7,7 @@
         }
 
         .home-element {
-            background-image:url({{ asset('img/Profilpicture.jpg') }});
+            background-image:;
             padding: 72px 32px 0;
             height: calc(100vh - 72px);
             display: flex;
@@ -53,7 +53,7 @@
 {% block body %}
     <section id="home" class="home">
         <div class="home-element">
-            <h1 class="text-center text-uppercase">Maria <br/> Mustermann</h1>
+            <h1 class="text-center text-uppercase">Dein  <br/> Name</h1>
             {% if showDownloadButton %}
                 <a href="{{ path('downloadCv', {'hash': hash}) }}" target="_blank"><button type="button" class="download btn btn-primary bold">Bewerbung herunterladen</button></a>
             {% endif %}
