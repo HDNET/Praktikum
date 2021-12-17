@@ -6,44 +6,22 @@
 {% block style %}
     <style>
         .career {
-            background-color: rgb(var(--color-primary-darker));
-            padding: 80px;
+
         }
 
         ul.career-element {
-            max-width: 1024px;
-            margin: 0;
-            padding: 0 0 0 64px;
-            -webkit-transform: translateZ(0);
+
         }
 
         @media screen and (max-width: 1020px){
-            .career {
-                padding: 32px;
-            }
+
         }
     </style>
 {% endblock %}
 {% block body %}
     {% set career = [
-        {'date': '2010',
-            'contentDate': '2010-2014',
-            'content': 'ging ich in die Grundschule am See, dort habe ich mich in diversen Arbeitsgemeinschaften eingesetzt und ein Interesse für Kreativität entwickelt.',},
-        {'date': '2014',
-            'contentDate': '2014-2018',
-            'content': 'habe ich mich in meiner Schule Gymansium XYZ in der Umwelt AG und in der Fotografie AG eingesetzt und hier meine Kenntnisse und Fähigkeiten in diesen Bereichen weiterhin ausgebaut.',
-        },
-        {'date': '2018',
-            'contentDate': '2018',
-            'content': 'durfte ich mein erstes Praktium in der Werbe Agentur FirstWEB absolvieren. Dort konnte ich einen ersten Einblick in den Beruf Webdesigner bekommen und habe mich in den drei Wochen viel mit Design Grundlagen, sowie HTML und ein wenig CSS beschäftigt.',
-        },
-        {'date': '2021',
-            'contentDate': 'bis 2021',
-            'content': 'besuche ich weiterhin das Gymnasium XYZ, wo ich voraussichtlich im Jahr 2022 mein Abitur mit den Prüfungsfächern Englisch, Informatik und Chemie absolvieren werde.',
-        },
     ] %}
     <section id="career" class="career">
-        <h2 class="text-uppercase">Werdegang</h2>
         <ul class="career-element">
             {% for item in career %}
                 {% include 'components/career/timeline.html.twig' %}
