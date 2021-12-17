@@ -26,19 +26,14 @@
 {% block body %}
 
         {% set experiences = [
-            {'headline': 'Praktikum - Webdesign',
-            'content': '2016 habe ich in einer Werbe Agentur mein 3-wöchiges Praktikum im Bereich Webdesign mit einem positiven Feedback abgeschlossen.',
-            'link': 'www.hdnet.de',
-            'linkText': 'zur Website von HDNET',
-            'img': 'img/code.png'},
-            {'headline': 'Level 3 English for Business',
-                'content': 'Am Ende der zehnten Klasse habe ich mein “LCCI Certificate” erworben, welches aussagt, dass ich die Prüfung für die C1 Stufe erfolgreich bestanden habe.',
-                'link': 'www.hdnet.de',
-                'linkText': 'zum Cambridge Assessments C1 Exam',
-                'img': 'img/english.png'}
+            {'headline': '',
+            'content': '',
+            'link': '',
+            'linkText': 'T',
+            'img': ''},
+
         ] %}
     <section id="experience" class="experience">
-        <h2 class="text-uppercase">Erfahrungen</h2>
         <div class="experience-element">
             {% for item in experiences %}
                 {% include 'components/experience/experience-content.html.twig' %}

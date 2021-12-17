@@ -21,30 +21,14 @@
 {% block body %}
     {% set expertises = [
         {
-            'headline': 'Englisch',
-            'percentage': 65
+            'headline': '',
+            'percentage': 0 ,
         },
-        {
-            'headline': 'JavaScript',
-            'percentage': 25
-        },
-        {
-            'headline': 'Fotografie',
-            'percentage': 85
-        },
-        {
-            'headline': 'Fitness',
-            'percentage': 45
-        },
-        {
-            'headline': 'Kreativität',
-            'percentage': 90
-        }]
+        ]
     %}
 
     <div id="expertise" class="expertise">
         <div class="expertise-element">
-            <h2 class="text-uppercase">Kenntnisse</h2>
 
             {% for expertise in expertises %}
                 {% with expertise %}
