@@ -16,6 +16,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Some todo 's are here
+ *
+ * Class IndexController
+ * @package App\Controller
+ */
 class IndexController extends AbstractController
 {
     /**
@@ -85,9 +91,25 @@ class IndexController extends AbstractController
          */
 
         // load form input from request if they are available
-        $form->handleRequest($request);
+        /*
+         * Damit das Formular überprüfen kann, ob es schon einmal ausgefüllt wurde, übergeben wir dem Formular den
+         * aktuellen Request, indem alle notwendigen Informationen stehen.
+         *
+         * Benutze dazu die Funktion 'handleRequest' des Formulars
+         */
         // check if form is submitted and if all values are syntactically correct
-        if ($form->isSubmitted() && $form->isValid()) {
+        /*
+         * Nur wenn das Formular schon einmal ausgefüllt wurde und die eingegebenen Daten valide sind, sollte eine
+         * Email versendet werden.
+         *
+         * Überprüfe nun mithilfe des Formulars und den Funktionen 'isSubmitted' und 'isValid' innerhalb eines
+         * if-Statements ob dieser Zustand zutrifft.
+         *
+         * Dabei markieren die Kommentare
+         * '## Start des If-Blocks' und '## Ende des If-Blocks'
+         * den Bereich welcher innerhalb des if-blockes steht.
+         */
+        // ## Start des If-Blocks
             try {
                 // send email with contact infos
                 /*
@@ -119,9 +141,13 @@ class IndexController extends AbstractController
 
             // redirect to home route
             return $this->redirectToRoute('home');
-        }
+        // ## Ende des If-Blocks
 
-        $showDownloadButton = $this->hashService->validateHash($request);
+        /*
+         * Überprüfe mithilfe des 'hashService' und der Funktion 'validateHash', ob der Hash welcher möglicherweise
+         * in der URL steht valide ist.
+         * Das Ergebnis, welches ein boolischer Wert ist, wird der Variable 'showDownloadButton' zugewiesen.
+         */
 
         // render template
         /*

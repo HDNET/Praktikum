@@ -43,10 +43,13 @@ class BackendController extends AbstractController
      */
     public function index() {
         // render template
-        return $this->render('/backend/index.html.twig', [
-            'user' => $this->getUser(), // get the current logged in user
-            'generatedLink' => ''
-        ]);
+        /*
+         * Hier soll wieder ein Template mit Daten gerendert werden.
+         * Template Name: /backend/index.html.twig
+         * Contexts:
+         *  - Der aktuelle User ('user') --> hier kannst du die Funktion 'getUser' verwenden welche von dieser Klasse bereitgestellt wird
+         *  - 'generatedLink' --> aktuell noch ein leerer String
+         */
     }
 
     /**
@@ -57,21 +60,45 @@ class BackendController extends AbstractController
     public function generateLink(Request $request, QueryService $queryService, Filesystem $filesystem, HashService $hashService) {
 
         // get params from request
-        $params = $queryService->getQueryParameter($request);
+        /*
+         * Die Informationen, welche wir zum Generieren des Links brauchen, befinden sich ebenfalls in dem request.
+         * Verwende den QueryService und die Funktion 'getQueryParameter', um die benötigten Daten aus dem Parameter
+         * herauszulesen.
+         *
+         * Weise das Ergebnis dieses Aufrufs in eine Variable, die 'params' heißt.
+         */
 
         // generate Folder if not exist
         $filesystem->mkdir(self::HASH_FILES_BASE_URL);
 
         // build hash
         $currentTime = time();
-        $hash = $hashService->generateHash($currentTime, $params['recipient']);
+        /*
+         * Die Hash Generierung:
+         * Mithilfe des 'hashService' und der Funktion 'generateHash' kannst du dir einen Hash generieren lassen.
+         * Speichere diesen in eine Variable ('hash')
+         */
 
         // create file with hash as filename
         $filesystem->touch(self::HASH_FILES_BASE_URL . '/' . $hash . '.txt');
 
         // build data for File
-        $dayMultiplier = 60*60*24;
-        $expireTime = $currentTime + $dayMultiplier * $params['expiresInDays'];
+        /*
+         * Erstelle eine Variable mit dem Namen 'dayMultiplier'. Diese soll einen ganzzahligen Wert enthalten. Dieser
+         * Wert ist die Anzahl an Sekunden, die ein Tag besitzt.
+         */
+
+        /*
+         * Nun soll der Zeitpunkt berechnet werden, an dem der Link nicht mehr gültig ist. Zuerst betrachten wir nur die
+         * zeitliche Komponente.
+         *
+         * Der Zeitpunkt wird mit folgender Formel berechnet:
+         * [Zeitpunkt der Ungültigkeit] = [aktueller Zeitpunkt] + [Anzahl an Sekunden pro Tag] * [Die Anzahl an Tage die der Link gültig ist]
+         *
+         * Das Ergebnis dieser Rechnung soll in einer Variable gespeichert werden, welche 'expireTime' heißt
+         *
+         */
+
         // Syntax:
         //      currentTime;recipient;dayExpirationTime;callExpirationNumber;numberOfCalls
         $data = $currentTime . ';' . $params['recipient'] . ';' . $expireTime . ';' . $params['expiresInLinkCalls'] . ';0';
@@ -142,12 +169,26 @@ class BackendController extends AbstractController
     public function removeUploadedCV(Filesystem $filesystem): Response
     {
         //  build the filename
-        $filename = IndexController::CV_ASSET_DIR . DIRECTORY_SEPARATOR . IndexController::CV_ASSET_FILENAME;
+        /*
+         * Da wir den Dateinamen des hochgeladenen Dokumentes mehrfach verwenden, bauen wir uns ihn einmal zusammen.
+         * Dazu gibt es in der Klasse IndexController eine Konstante, die 'CV_ASSET_DIR' heist. In dieser Konstante ist
+         * der Pfad zum Ordner, indem die Datei liegt gespeichert. Als Nächstes benötigen wir noch die Konstante
+         * 'DIRECTORY_SEPARATOR'. Diese enthält je nach Betriebssystem das Zeichen, mit welchem ein Pfad getrennt ist.
+         * Zuletzt befindet sich im IndexController noch eine weitere Konstante. Die Konstante mit dem Namen:
+         * 'CV_ASSET_FILENAME'.
+         *
+         * Verbinde diese drei Konstanten miteinander und speichere sie in eine Variable ('filename')
+         */
         // check if file with filename exists
-        if($filesystem->exists($filename)) {
-            // remove file
-            $filesystem->remove($filename);
-        }
+        /*
+         * Der Service Filesystem spiegelt unser Dateisystem auf dem Rechner/ Server wider. Mithilfe des Filesystems
+         * können wir überprüfen, ob die Datei überhaupt existiert. Dazu verwende die Funktion 'exist' der du den
+         * filename übergibst.
+         *
+         * Das Ergebnis wird in einer If-Bedingung überprüft.
+         *
+         * Ist die Datei vorhanden, hilft uns die Funktion 'remove' von dem Filesystem Service die Datei zu löschen.
+         */
         // redirect to backend
         return $this->redirectToRoute('Admin');
     }
