@@ -26,20 +26,12 @@ class QueryService
         // set empty array as default return value
         $queryParams = [];
 
-        // get the query string from the given request
-        $queryString = $request->getQueryString();
-        // query params are separated by the '&' char.
-        // split the string and put them in an array
-        $queries = explode('&', $queryString);
-
-        // go through all parts of the query string and split them into key => value pairs
-        foreach ($queries as $query) {
-            // split by the char '=' and put the parts in an array
-            $splittedQuery = explode('=', $query);
-            // set the first element (index 0) as the key and the second part (index 1) as the value
-            // if the value is evaluate as false a empty string will be set
-            $queryParams[$splittedQuery[0]] = $splittedQuery[1] ? $splittedQuery[1] : '';
-        }
+        /*
+         * Extrahiere aus dem gegebenen Request den QueryString und erstelle aus diesem ein Array.
+         * Die Werte sollen als Key den Key haben, welcher auch im QueryString verwendet wurden.
+         *
+         * Verwende das Array 'queryParams'
+         */
 
         // return the parsed query params
         return $queryParams;

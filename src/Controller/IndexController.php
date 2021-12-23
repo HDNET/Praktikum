@@ -57,9 +57,9 @@ class IndexController extends AbstractController
      */
     public function __construct(EmailService $emailService, HashService $hashService, $reciverEmailAddress)
     {
-        $this->emailService = $emailService;
-        $this->hashService = $hashService;
-        $this->reciverEmailAddress = $reciverEmailAddress;
+        /*
+         * Weise den Variablen in dieser Klasse die Objekte zu, welche in den Parametern mitgegeben werden.
+         */
     }
 
     /**
@@ -173,14 +173,34 @@ class IndexController extends AbstractController
      */
     public function getUploadedCv(Filesystem $filesystem, Request $request): Response
     {
-        if (!$this->hashService->validateHash($request)) {
-            return new Response('Not authorized', Response::HTTP_FORBIDDEN);
-        }
+        /*
+         * Überprüfe mithilfe des HashServices, ob der im Request übergebene Hash valide ist.
+         *
+         * Wenn nicht, dann returne einen Response mit der Meldung, dass man nicht autorisiert ist: 'Not authorized'.
+         * Füge den passenden HTTP Response Code an.
+         */
 
-        $filename = self::CV_ASSET_DIR.\DIRECTORY_SEPARATOR.self::CV_ASSET_FILENAME;
-        if (!$filesystem->exists($filename)) {
-            return new Response('File not set yet!', Response::HTTP_NOT_FOUND);
-        }
-        return new BinaryFileResponse($filename);
+        /*
+         * Zuerst bauen wir den Dateinamen des Dokumentes zusammen. Dazu gibt es in dieser Klasse eine Konstante, die
+         * 'CV_ASSET_DIR' heißt. In dieser Konstante ist der Pfad zum Ordner, indem die Datei liegt gespeichert. Als
+         * Nächstes benötigen wir noch die Konstante 'DIRECTORY_SEPARATOR'. Diese enthält je nach Betriebssystem das
+         * Zeichen, mit welchem ein Pfad getrennt ist. Zuletzt befindet sich in dieser Klasse noch eine weitere
+         * Konstante. Die Konstante mit dem Namen: 'CV_ASSET_FILENAME'.
+         *
+         * Verbinde diese drei Konstanten miteinander und speichere sie in eine Variable ('filename')
+         */
+
+        /*
+         * Überprüfe mithilfe des Filesystem Service, ob eine Datei mit dem eben erstellen Dateinamen existiert. Ist
+         * das nicht der Fall, gebe erneut einen Response zurück der besagt, dass noch keine Datei gesetzt wurde und dem
+         * Statuscode 404.
+         */
+
+        /*
+         * Wenn der Aufruf an diese Stelle gelangt ist, kann die Datei zurückgegeben werden. Dazu erstellen wir einen
+         * neuen BinaryFileResponse und übergeben ihm im Konstruktor einfach den Dateinamen.
+         *
+         * Das neu erstellte Objekt returnen wir.
+         */
     }
 }
