@@ -1,46 +1,36 @@
 {% block style %}
     <style>
         .hobby {
-            background-color: rgb(var(--color-primary-darker));
-            padding: 80px;
+
         }
 
         .hobby-element{
-            max-width: 1024px;
-            display: grid;
-            grid-template-columns: 60% auto;
-            grid-gap: 32px;
+
         }
         .hobby-cards{
-            display: grid;
-            grid-gap: 32px;
-            width: 100%;
-            grid-template-columns: repeat(2, 50%);
+
         }
 
         .hobby-text {
-            width: auto;
-            padding: 0 32px;
+
         }
 
         @media screen and (max-width: 1020px) {
             .hobby-element {
-                display: flex;
-                flex-direction: column;
+
             }
         }
 
         @media screen and (max-width: 650px){
             .hobby {
-                min-height: max-content !important;
-                padding: 16px;
+
             }
             .hobby-cards {
-                grid-template-columns: repeat(1, 100%);
+
             }
 
             .hobby-text {
-                padding: 0 16px;
+
             }
         }
     </style>
@@ -48,19 +38,10 @@
 
 {% block body %}
     {% set hobbies = [
-        {'headline': 'Umwelt',
-        'content': 'In meiner Freizeit verbringe ich gerne Zeit in der Natur und informiere mich über den Klimaschutz, sowie mir unbekannte Planzenarten.',
-        'icon': 'svg/nature.svg'},
-        {'headline': 'Fotografie',
-            'content': 'Während ich unterwegs bin schieße ich gerne mit meiner Canon 500D Bilder von der Natur und von schönen Momenten und Kulissen',
-            'icon': 'svg/camera.svg'},
-        {'headline': 'Mode',
-            'content': 'Ich drücke mich gerne mit meinem Kleidungsstyle aus und beschäftige mich mit neuen Trends in der Mode Branche.',
-            'icon': 'svg/clothing.svg'
-        },
-        {'headline': 'Programmieren',
-            'content': 'In der Schule, sowie auch in meiner Freizeit, bereitet mir das Programmieren mit HTML, CSS und JavaScript viel Freude.',
-            'icon': 'svg/code.svg'},
+        {'headline': '',
+        'content': '',
+        'icon': ''},
+
     ] %}
 
     <section id="hobby" class="hobby">
@@ -69,11 +50,6 @@
                 {% for item in hobbies %}
                     {% include 'components/card.html.twig' with item %}
                 {% endfor %}
-            </span>
-            <span class="hobby-text">
-                <h2> Vorstellung meiner Person</h2>
-                <p class="light color-primary-normal">Mein Name ist Maria Mustermann. Ich bin 17 Jahre alt und besuche derzeit das Gymnasium XYZ in Musterstadt. Meine Interessen liegen im Kreativen und Nachhaltigen Bereich. Ich fotografiere gerne und achte sehr auf meinen CO2 Fußabdruck. In der Schule belege ich die Leistungskurse Englisch, Informatik und Chemie. Hierbei bringt mir in Informatik das Programmieren viel Freude, daher beschäftige ich mich hiermit auch in meiner Freizeit.
-                </p>
             </span>
         </div>
     </section>
