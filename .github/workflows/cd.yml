@@ -32,26 +32,46 @@ jobs:
 
       - name: Build static html
         run: bin/console app:generate-html
+      
+      - name: Archive artifact
+        run: |
+          chmod -c -R +rX "$INPUT_PATH" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+          tar \
+            --dereference --hard-dereference \
+            --directory "$INPUT_PATH" \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=.htaccess \
+            --exclude=index.php \
+            .
+        env:
+          INPUT_PATH: public
 
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@main
         with:
-          name: dist
-          path: |
-            public
-            !public/.htaccess
-            !public/index.php
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
 
   deploy:
     name: TDB
     needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-      - name: Deploy to S3
-        shell: bash
-        run: |
-          ls -la
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
