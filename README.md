@@ -7,20 +7,17 @@
 - Florian Patruck
 
 ## System requirements
-- [MAMP](https://www.mamp.info/)
-- [Mailhog](https://github.com/mailhog/MailHog)
+- [Lando](https://lando.dev/download/)
 - [Git](https://git-scm.com/)
 
 ### Getting started
 1. Check if all requirements are covered!
 2. Run `git clone https://github.com/HDNET/Praktikum.git` to checkout the repo.
-3. Launch MAMP
-4. Set the root directory to your project folder and append /public (under setting, navigate to the server tab and set the directory)
-5. Pick PHP version 7.4.21
-6. Click start and visit http://localhost:8888/
-7. Launch mailhog and visit http://0.0.0.0:8025/
-8. TODO's aus der `WhatToDoBefore.md` durchführen
-9. Enjoy!
+3. Run `lando start` to start the server.
+4. Open https://praktikum.lndo.site to see the page
+5. Open https://mailhog.lndo.site to see outgoing mails
+6. TODO's aus der `WhatToDoBefore.md` durchführen
+7. Enjoy!
 
 ## Software Used
 - PHP 7.4

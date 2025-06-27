@@ -3,3 +3,14 @@ recipe: lamp
 config:
   webroot: public
   php: 7.4
+
+services:
+  mailhog:
+    type: mailhog
+    portforward: true
+    hogfrom:
+      - appserver
+
+proxy:
+  mailhog:
+    - mailhog.lndo.site
